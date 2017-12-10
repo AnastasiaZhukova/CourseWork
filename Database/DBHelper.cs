@@ -5,7 +5,7 @@ namespace Database
     public class DbHelper<T> where T : IIdentifiable
     {
         private readonly Serializer<DataBase<T>> _serializer;
-        private readonly object SyncLock = new object();
+        private readonly object _syncLock = new object();
 
         public DbHelper()
         {
@@ -16,7 +16,7 @@ namespace Database
         public DataBase<T> Read(IDbSource pSource)
         {
             DataBase<T> dataBase;
-            lock (SyncLock)
+            lock (_syncLock)
             {
                 var stream = pSource.GetStream();
                 dataBase = _serializer.Read(stream);
@@ -30,7 +30,7 @@ namespace Database
 
         public void Write(DataBase<T> pDataBase, IDbSource pTarget)
         {
-            lock (SyncLock)
+            lock (_syncLock)
             {
                 var stream = pTarget.GetStream();
                 _serializer.Write(pDataBase, stream);

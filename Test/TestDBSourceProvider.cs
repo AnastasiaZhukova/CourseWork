@@ -1,4 +1,5 @@
-﻿using BankSystem.Models.DB;
+﻿using System;
+using BankSystem.Models.DB;
 using Database;
 
 namespace Test
@@ -25,7 +26,7 @@ namespace Test
 
         public IDbSource GetTransactionDbSource()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

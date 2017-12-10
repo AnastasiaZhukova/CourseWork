@@ -2,7 +2,7 @@
 
 namespace BankSystem.Models.User.Account
 {
-    public class NotEnoughMoneyException : Exception
+    internal class NotEnoughMoneyException : Exception
     {
         public NotEnoughMoneyException(string message) : base(message)
         {

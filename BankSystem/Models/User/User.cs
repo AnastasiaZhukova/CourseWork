@@ -7,15 +7,15 @@ namespace BankSystem.Models.User
     public class User : IIdentifiable
     {
         [DataMember]
-        public int Id { get; private set; }
+        internal int Id { get; private set; }
 
         [DataMember]
-        public string Name { get; private set; }
+        internal string Name { get; private set; }
 
         [DataMember]
-        public long AccountId { get; private set; }
+        internal long AccountId { get; private set; }
 
-        public User(int id, string name, long accountId)
+        internal User(int id, string name, long accountId)
         {
             Id = id;
             Name = name;
@@ -25,11 +25,6 @@ namespace BankSystem.Models.User
         public int GetId()
         {
             return Id;
-        }
-
-        public bool HasAccount(int accountId)
-        {
-            return AccountId == accountId;
         }
     }
 }

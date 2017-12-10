@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Globalization;
+using System.Runtime.Serialization;
 
 namespace BankSystem.Models.User.Account
 {
@@ -6,9 +7,9 @@ namespace BankSystem.Models.User.Account
     public class Balance
     {
         [DataMember]
-        public decimal Amount { get; private set; }
+        internal decimal Amount { get; private set; }
 
-        public Balance(decimal amount)
+        internal Balance(decimal amount)
         {
             Amount = amount;
         }
@@ -25,7 +26,7 @@ namespace BankSystem.Models.User.Account
 
         public override string ToString()
         {
-            return Amount.ToString();
+            return Amount.ToString(CultureInfo.CurrentCulture);
         }
     }
 }

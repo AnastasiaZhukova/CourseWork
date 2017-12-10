@@ -17,6 +17,8 @@ namespace CourseWork_3_sem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
+           
         }
     }
 }

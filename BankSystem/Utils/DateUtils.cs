@@ -4,14 +4,16 @@ namespace BankSystem.Utils
 {
     public static class DateUtils
     {
-        public static string getCurrentDate()
-        {
-            return DateTime.Today.ToShortDateString();
-        }
+        private const string UserFriendlyFormat = "G";
 
-        public static long getCurrentTime()
+        public static long GetCurrentTime()
         {
             return DateTime.Now.ToBinary();
+        }
+
+        public static string ConvertToUserFriendlyFormat(long time)
+        {
+            return DateTime.FromBinary(time).ToString(UserFriendlyFormat);
         }
     }
 }

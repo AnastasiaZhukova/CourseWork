@@ -1,13 +1,15 @@
-﻿using BankSystem.Models.DB;
-
-namespace BankSystem.Models.Transaction
+﻿namespace BankSystem.Models.Transaction
 {
     public class TransactionManager
     {
+        public delegate void TransactionFinished(Transaction transaction);
+
+        public event TransactionFinished OnTransactionFinished;
+
         private static volatile TransactionManager _instance;
         private static readonly object SyncLock = new object();
 
-        private TransactionHandler _transactionHandler;
+        private readonly TransactionHandler _transactionHandler;
 
         private TransactionManager()
         {
@@ -21,25 +23,26 @@ namespace BankSystem.Models.Transaction
             lock (SyncLock)
             {
                 if (_instance != null) return _instance;
-
                 _instance = new TransactionManager();
             }
 
             return _instance;
         }
 
-
         public TransactionBuilder CreateTransaction()
         {
-            var handler = new TransactionHandler();
-
             return new TransactionBuilder();
         }
 
         internal void Start(Transaction transaction)
         {
+            _transactionHandler.OnTransactionFinished += OnFinish;
             _transactionHandler.Enquequ(transaction);
         }
 
+        private void OnFinish(Transaction transaction)
+        {
+            OnTransactionFinished?.Invoke(transaction);
+        }
     }
 }

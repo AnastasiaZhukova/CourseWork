@@ -1,7 +1,5 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Threading;
 using BankSystem.Models.DB;
 using BankSystem.Models.User.Account;
@@ -11,7 +9,7 @@ namespace BankSystem.Models.Transaction
 {
     public class TransactionHandler
     {
-        internal delegate void FinishTransaction();
+        internal delegate void FinishTransaction(Transaction transaction);
 
         internal event FinishTransaction OnTransactionFinished;
 
@@ -19,22 +17,24 @@ namespace BankSystem.Models.Transaction
         private readonly object _syncLock = new object();
 
 
-        public TransactionHandler()
+        internal TransactionHandler()
         {
             _transactions = new ConcurrentQueue<Transaction>();
+
+            var maxNumOfThreads = Environment.ProcessorCount;
+            ThreadPool.SetMaxThreads(maxNumOfThreads, maxNumOfThreads);
         }
 
         internal void Enquequ(Transaction transaction)
         {
             _transactions.Enqueue(transaction);
-            new Thread(StartTransaction).Start();
+            ThreadPool.QueueUserWorkItem(HandleTransaction);
         }
-
 
         private User.User _user;
         private Account _account;
 
-        private void StartTransaction()
+        private void HandleTransaction(object state)
         {
             lock (_syncLock)
             {
@@ -50,50 +50,72 @@ namespace BankSystem.Models.Transaction
                 _user = dbManager.GetUserDataBase().Get(ownerId);
                 _account = dbManager.GetAccountDatabase().Get(accountId);
 
-                var status = _user.HasAccount(_account.Id)
-                    ? MakeTransaction(transactionType, amount)
-                    : TransactionStatus.Error;
+                TransactionStatus status;
+
+                try
+                {
+                    MakeTransaction(transactionType, amount);
+                    status = TransactionStatus.Success;
+                }
+                catch (NotEnoughMoneyException e)
+                {
+                    status = TransactionStatus.Error;
+                    transaction.ErrorMessage = e.Message;
+                }
+                catch (UnknowTransactionException e)
+                {
+                    status = TransactionStatus.Error;
+                    transaction.ErrorMessage = e.Message;
+                }
+                catch (Exception)
+                {
+                    status = TransactionStatus.Error;
+                    transaction.ErrorMessage = "Unknown error";
+                }
 
                 transaction.Status = status;
                 transaction.Time = GetCurrentTime();
                 transaction.TransactionId = GenerateId();
 
-                SaveToDb(transaction);
+                
+                AccountUtils.RegisterTransaction(_account.Id, transaction);
+
+                OnTransactionFinished?.Invoke(transaction);
             }
         }
 
-        private TransactionStatus MakeTransaction(TransactionType type, decimal amount)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="amount"></param>
+        /// <exception cref="NotEnoughMoneyException"></exception>
+        /// <exception cref="UnknowTransactionException"></exception>
+        private void MakeTransaction(TransactionType type, decimal amount)
         {
-            try
+            switch (type)
             {
-                switch (type)
+                case TransactionType.Deposit:
                 {
-                    case TransactionType.Deposit:
-                    {
-                        _account.Deposit(amount);
-                        break;
-                    }
-                    case TransactionType.Withdraw:
-                    {
-                        _account.Withdraw(amount);
-                        break;
-                    }
-                    default:
-                    {
-                        throw new Exception("Unknown transaction");
-                    }
+                    _account.Deposit(amount);
+                    break;
+                }
+                case TransactionType.Withdraw:
+                {
+                    _account.Withdraw(amount);
+                    break;
+                }
+                default:
+                {
+                    throw new UnknowTransactionException("Unknown transaction");
                 }
             }
-            catch (Exception)
-            {
-                return TransactionStatus.Error;
-            }
-            return TransactionStatus.Success;
         }
 
-        private long GetCurrentTime()
+        private static long GetCurrentTime()
         {
-            return DateUtils.getCurrentTime();
+            return DateUtils.GetCurrentTime();
         }
 
         private int GenerateId()
@@ -102,9 +124,5 @@ namespace BankSystem.Models.Transaction
             return (int) (GetCurrentTime() / (1000 * _user.GetHashCode()));
         }
 
-        private void SaveToDb(Transaction transaction)
-        {
-            new Thread(() => { DbManager.GetInstance().GetTransactionDataBase().Put(transaction); }).Start();
-        }
     }
 }

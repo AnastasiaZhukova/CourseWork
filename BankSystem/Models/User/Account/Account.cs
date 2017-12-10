@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Threading;
 using Database;
@@ -10,32 +11,37 @@ namespace BankSystem.Models.User.Account
     public class Account : IIdentifiable
     {
         [DataMember]
-        public int Id { get; private set; }
+        internal int Id { get; private set; }
 
         [DataMember]
-        public long OwnerId { get; private set; }
+        internal int Pin { get; private set; }
 
         [DataMember]
-        public Balance Balance { get; private set; }
+        internal long OwnerId { get; private set; }
+
+        [DataMember]
+        internal Balance Balance { get; private set; }
+
+        [DataMember]
+        internal List<int> TransactionIds { get; private set; }
 
         public int GetId()
         {
             return Id;
         }
 
-        public Account(int id, long ownerId, Balance balance)
+        internal Account(int id, long ownerId, Balance balance)
         {
             Id = id;
             OwnerId = ownerId;
             Balance = balance;
         }
 
-
         /// <summary>
         /// Deposits certain amount of money into the account
         /// </summary>
         /// <param name="pAmount"></param>
-        public void Deposit(decimal pAmount)
+        internal void Deposit(decimal pAmount)
         {
             lock (this)
             {
@@ -48,7 +54,7 @@ namespace BankSystem.Models.User.Account
         /// </summary>
         /// <param name="pAmount"></param>
         /// <exception cref="NotEnoughMoneyException"></exception>
-        public void Withdraw(decimal pAmount)
+        internal void Withdraw(decimal pAmount)
         {
             Debug.Print("Try withdraw: " + Thread.CurrentThread.Name);
 
@@ -72,7 +78,6 @@ namespace BankSystem.Models.User.Account
                 Balance.Subtract(pAmount);
             }
         }
-
 
         private bool IsEnoughMoney(decimal pRequiredAmount)
         {

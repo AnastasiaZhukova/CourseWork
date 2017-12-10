@@ -9,6 +9,5 @@ namespace BankSystem.Models.DB
         IDbSource GetAccountDbSource();
 
         IDbSource GetTransactionDbSource();
-        
     }
 }
