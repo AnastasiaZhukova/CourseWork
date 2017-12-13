@@ -8,12 +8,6 @@ namespace Test
     [TestFixture]
     public class AccountTest
     {
-        private Account _account;
-        private const int Id = 123;
-        private const int OwnerId = 567;
-        private Balance _balance;
-        private const decimal StartAmount = 1000;
-
         [SetUp]
         public void SetUp()
         {
@@ -21,12 +15,11 @@ namespace Test
             _account = new Account(Id, OwnerId, _balance);
         }
 
-        [Test]
-        public void SimpleWithdraw()
-        {
-            _account.Withdraw(100);
-            Assert.AreNotEqual(StartAmount, _account.Balance.Amount);
-        }
+        private Account _account;
+        private const int Id = 123;
+        private const int OwnerId = 567;
+        private Balance _balance;
+        private const decimal StartAmount = 1000;
 
         [Test]
         public void MultithreadWithdraw()
@@ -52,6 +45,13 @@ namespace Test
                 Assert.NotNull(e);
             }
 
+            Assert.AreNotEqual(StartAmount, _account.Balance.Amount);
+        }
+
+        [Test]
+        public void SimpleWithdraw()
+        {
+            _account.Withdraw(100);
             Assert.AreNotEqual(StartAmount, _account.Balance.Amount);
         }
     }

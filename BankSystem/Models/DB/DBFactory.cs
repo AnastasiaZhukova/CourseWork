@@ -1,5 +1,4 @@
-﻿using System;
-using BankSystem.Models.User.Account;
+﻿using BankSystem.Models.User.Account;
 using Database;
 
 namespace BankSystem.Models.DB
@@ -7,7 +6,6 @@ namespace BankSystem.Models.DB
     internal static class DbFactory
     {
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="pSource"></param>
         /// <returns></returns>
@@ -21,7 +19,6 @@ namespace BankSystem.Models.DB
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="pSource"></param>
         /// <returns></returns>
@@ -35,7 +32,6 @@ namespace BankSystem.Models.DB
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="pSource"></param>
         /// <returns></returns>

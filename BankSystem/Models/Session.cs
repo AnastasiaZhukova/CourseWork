@@ -6,29 +6,48 @@ namespace BankSystem.Models
 {
     public class Session
     {
-        public delegate void TransactionStarted();
-        public event TransactionStarted OnTransactionStarted;
-
         public delegate void TransactionFinished(int transactionId);
-        public event TransactionFinished OnTransactionFinished;
 
-        private readonly Atm _atm;
-        private readonly User.User _user;
+        public delegate void TransactionStarted();
+
         private readonly Account _account;
 
-        private readonly TransactionManager _transactionManager;
+        private readonly Atm _atm;
+        private readonly DbManager _dbManager = DbManager.GetInstance();
 
-        public Session(Atm atm, Account account)
+        private readonly TransactionManager _transactionManager;
+        private readonly User.User _user;
+
+        /// <summary>
+        /// </summary>
+        /// <param name="atm"></param>
+        /// <param name="accountId"></param>
+        /// <exception cref="IllegalStateException"></exception>
+        public Session(Atm atm, int accountId)
         {
             _atm = atm;
-            _user = DbManager.GetInstance().GetUserDataBase().Get(account.OwnerId);
-            _account = account;
+
+            _account = _dbManager.GetAccountDatabase().Get(accountId);
+            if (_account == null) throw new IllegalStateException("Account not found");
+            _user = _dbManager.GetUserDataBase().Get(_account.OwnerId);
+            if (_user == null) throw new IllegalStateException("User not found");
+
             _transactionManager = TransactionManager.GetInstance();
+        }
+
+        public event TransactionStarted OnTransactionStarted;
+        public event TransactionFinished OnTransactionFinished;
+
+        public string GetAccountBalance()
+        {
+            if (_account == null || _user == null) throw new IllegalStateException();
+
+            return _account.Balance.ToString();
         }
 
         public void MakeTransaction(TransactionType type, decimal amount)
         {
-            _transactionManager.OnTransactionFinished += Finish;
+            _transactionManager.OnTransactionFinished += FinishTransaction;
 
             _transactionManager.CreateTransaction()
                 .SetAccountId(_account.GetId())
@@ -41,14 +60,14 @@ namespace BankSystem.Models
             OnTransactionStarted?.Invoke();
         }
 
-        private void Finish(Transaction.Transaction transaction)
+        public string GetCheck(int transactionId)
         {
-            OnTransactionFinished?.Invoke(transaction.GetId());
+            return _dbManager.GetTransactionDataBase().Get(transactionId).ToString();
         }
 
-        public string PrintCheck(int transactionId)
+        private void FinishTransaction(Transaction.Transaction transaction)
         {
-            return DbManager.GetInstance().GetTransactionDataBase().Get(transactionId).ToString();
+            OnTransactionFinished?.Invoke(transaction.GetId());
         }
     }
 }

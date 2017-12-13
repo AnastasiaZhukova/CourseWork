@@ -6,13 +6,13 @@ namespace BankSystem.Models.User.Account
     [DataContract(Name = "Balance")]
     public class Balance
     {
-        [DataMember]
-        internal decimal Amount { get; private set; }
-
         internal Balance(decimal amount)
         {
             Amount = amount;
         }
+
+        [DataMember]
+        internal decimal Amount { get; private set; }
 
         internal void Add(decimal pAmount)
         {

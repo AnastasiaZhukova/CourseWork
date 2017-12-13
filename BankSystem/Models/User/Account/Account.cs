@@ -10,6 +10,13 @@ namespace BankSystem.Models.User.Account
     [KnownType(typeof(Balance))]
     public class Account : IIdentifiable
     {
+        internal Account(int id, long ownerId, Balance balance)
+        {
+            Id = id;
+            OwnerId = ownerId;
+            Balance = balance;
+        }
+
         [DataMember]
         internal int Id { get; private set; }
 
@@ -30,15 +37,8 @@ namespace BankSystem.Models.User.Account
             return Id;
         }
 
-        internal Account(int id, long ownerId, Balance balance)
-        {
-            Id = id;
-            OwnerId = ownerId;
-            Balance = balance;
-        }
-
         /// <summary>
-        /// Deposits certain amount of money into the account
+        ///     Deposits certain amount of money into the account
         /// </summary>
         /// <param name="pAmount"></param>
         internal void Deposit(decimal pAmount)
@@ -50,7 +50,7 @@ namespace BankSystem.Models.User.Account
         }
 
         /// <summary>
-        /// Withdraws certain amount of money from the account
+        ///     Withdraws certain amount of money from the account
         /// </summary>
         /// <param name="pAmount"></param>
         /// <exception cref="NotEnoughMoneyException"></exception>

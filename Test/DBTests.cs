@@ -8,6 +8,16 @@ namespace Test
     [TestFixture]
     public class DbTests
     {
+        [SetUp]
+        public void SetUp()
+        {
+            _userHelper = new DbHelper<User>();
+            _accountHelper = new DbHelper<Account>();
+
+            _userSource = new TestSource(UserFile);
+            _accountSource = new TestSource(AccountFile);
+        }
+
         private DataBase<User> _userDataBase;
         private DataBase<Account> _accountDataBase;
         private DbHelper<User> _userHelper;
@@ -21,23 +31,11 @@ namespace Test
         private const string AccountFile =
             "C:\\Users\\Asus\\Documents\\Visual Studio 2017\\Projects\\CourseWork_3_sem\\Test\\accounts.json";
 
-        [SetUp]
-        public void SetUp()
-        {
-            _userHelper = new DbHelper<User>();
-            _accountHelper = new DbHelper<Account>();
 
-            _userSource = new TestSource(UserFile);
-            _accountSource = new TestSource(AccountFile);
-        }
-
-        [Test]
-        public void SholdNotBeNull()
+        private void ReadDataBases()
         {
-            Assert.True(_userHelper != null);
-            Assert.True(_accountHelper != null);
-            Assert.True(_userSource != null);
-            Assert.True(_accountSource != null);
+            _userDataBase = _userHelper.Read(_userSource);
+            _accountDataBase = _accountHelper.Read(_accountSource);
         }
 
 
@@ -56,6 +54,15 @@ namespace Test
             Assert.True(_userDataBase.Get(0L) != null);
             Assert.AreEqual(length, _accountDataBase.GetAll().Count);
             Assert.True(_accountDataBase.Get(70L) != null);
+        }
+
+        [Test]
+        public void SholdNotBeNull()
+        {
+            Assert.True(_userHelper != null);
+            Assert.True(_accountHelper != null);
+            Assert.True(_userSource != null);
+            Assert.True(_accountSource != null);
         }
 
 
@@ -85,13 +92,6 @@ namespace Test
 
             Assert.AreNotEqual(startMoney, afterUpdateMoney);
             Assert.AreEqual(newMoney, afterUpdateMoney);
-        }
-
-
-        private void ReadDataBases()
-        {
-            _userDataBase = _userHelper.Read(_userSource);
-            _accountDataBase = _accountHelper.Read(_accountSource);
         }
     }
 }

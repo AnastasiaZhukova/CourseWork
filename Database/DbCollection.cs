@@ -7,7 +7,7 @@ namespace Database
 
     {
         /// <summary>
-        /// Method that returns object from DataBase by Id
+        ///     Method that returns object from DataBase by Id
         /// </summary>
         /// <param name="pId"></param>
         /// <returns></returns>

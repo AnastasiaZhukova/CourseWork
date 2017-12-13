@@ -10,6 +10,15 @@ namespace BankSystem.Models.Transaction
     [KnownType(typeof(TransactionStatus))]
     public class Transaction : IIdentifiable
     {
+        internal Transaction(TransactionBuilder pBuilder)
+        {
+            AtmId = pBuilder.AtmId;
+            OwnerId = pBuilder.OwnerId;
+            AccountId = pBuilder.AccountId;
+            Type = pBuilder.Type;
+            Amount = pBuilder.Amount;
+        }
+
         [DataMember]
         private int AtmId { get; set; }
 
@@ -37,16 +46,6 @@ namespace BankSystem.Models.Transaction
         [DataMember]
         internal string ErrorMessage { get; set; }
 
-
-        internal Transaction(TransactionBuilder pBuilder)
-        {
-            AtmId = pBuilder.AtmId;
-            OwnerId = pBuilder.OwnerId;
-            AccountId = pBuilder.AccountId;
-            Type = pBuilder.Type;
-            Amount = pBuilder.Amount;
-        }
-
         public int GetId()
         {
             return TransactionId;
@@ -64,9 +63,7 @@ namespace BankSystem.Models.Transaction
             builder.Append("Time: ").Append(DateUtils.ConvertToUserFriendlyFormat(Time)).Append("\n");
             builder.Append("Status: ").Append(Status).Append("\n");
             if (!(string.IsNullOrEmpty(ErrorMessage) || string.IsNullOrWhiteSpace(ErrorMessage)))
-            {
                 builder.Append("Error: ").Append(ErrorMessage).Append("\n");
-            }
 
             return builder.ToString();
         }

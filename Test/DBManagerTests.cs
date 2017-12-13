@@ -10,16 +10,15 @@ namespace Test
     [TestFixture]
     public class DbManagerTests
     {
-        private DbManager _dbManager;
-        private DataBase<User> _userDataBase;
-        private DataBase<Account> _accountDataBase;
-
-
         [SetUp]
         public void SetUp()
         {
             _dbManager = DbManager.GetInstance();
         }
+
+        private DbManager _dbManager;
+        private DataBase<User> _userDataBase;
+        private DataBase<Account> _accountDataBase;
 
         [Test]
         public void ShouldNotBeNull()
@@ -61,7 +60,7 @@ namespace Test
 
             Assert.AreEqual(length, _userDataBase.GetAll().Count);
             Assert.True(_userDataBase.Get(0) != null);
-            Assert.AreEqual(length, (_accountDataBase.GetAll().Count));
+            Assert.AreEqual(length, _accountDataBase.GetAll().Count);
             Assert.True(_accountDataBase.Get(70) != null);
         }
     }

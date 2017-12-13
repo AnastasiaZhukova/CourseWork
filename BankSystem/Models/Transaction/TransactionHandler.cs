@@ -9,12 +9,12 @@ namespace BankSystem.Models.Transaction
 {
     public class TransactionHandler
     {
-        internal delegate void FinishTransaction(Transaction transaction);
-
-        internal event FinishTransaction OnTransactionFinished;
+        private readonly object _syncLock = new object();
 
         private readonly ConcurrentQueue<Transaction> _transactions;
-        private readonly object _syncLock = new object();
+        private Account _account;
+
+        private User.User _user;
 
 
         internal TransactionHandler()
@@ -25,14 +25,13 @@ namespace BankSystem.Models.Transaction
             ThreadPool.SetMaxThreads(maxNumOfThreads, maxNumOfThreads);
         }
 
+        internal event FinishTransaction OnTransactionFinished;
+
         internal void Enquequ(Transaction transaction)
         {
             _transactions.Enqueue(transaction);
             ThreadPool.QueueUserWorkItem(HandleTransaction);
         }
-
-        private User.User _user;
-        private Account _account;
 
         private void HandleTransaction(object state)
         {
@@ -77,7 +76,7 @@ namespace BankSystem.Models.Transaction
                 transaction.Time = GetCurrentTime();
                 transaction.TransactionId = GenerateId();
 
-                
+
                 AccountUtils.RegisterTransaction(_account.Id, transaction);
 
                 OnTransactionFinished?.Invoke(transaction);
@@ -86,7 +85,6 @@ namespace BankSystem.Models.Transaction
 
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="type"></param>
         /// <param name="amount"></param>
@@ -124,5 +122,6 @@ namespace BankSystem.Models.Transaction
             return (int) (GetCurrentTime() / (1000 * _user.GetHashCode()));
         }
 
+        internal delegate void FinishTransaction(Transaction transaction);
     }
 }

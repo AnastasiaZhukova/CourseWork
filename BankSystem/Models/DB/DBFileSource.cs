@@ -1,20 +1,23 @@
 ﻿using System.IO;
+using System.Runtime.Serialization;
 using Database;
 
 namespace BankSystem.Models.DB
 {
-    internal class DbFileSource : IDbSource
+    [DataContract(Name = "DBFileSource")]
+    public class DbFileSource : IDbSource
     {
-        private readonly string _path;
-
         public DbFileSource(string pPath)
         {
-            _path = pPath;
+            Path = pPath;
         }
+
+        [DataMember]
+        private string Path { get; set; }
 
         public Stream GetStream()
         {
-            return new FileStream(_path, FileMode.Open);
+            return new FileStream(Path, FileMode.Open);
         }
     }
 }

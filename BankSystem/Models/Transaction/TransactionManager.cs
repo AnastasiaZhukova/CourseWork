@@ -4,8 +4,6 @@
     {
         public delegate void TransactionFinished(Transaction transaction);
 
-        public event TransactionFinished OnTransactionFinished;
-
         private static volatile TransactionManager _instance;
         private static readonly object SyncLock = new object();
 
@@ -15,6 +13,8 @@
         {
             _transactionHandler = new TransactionHandler();
         }
+
+        public event TransactionFinished OnTransactionFinished;
 
         public static TransactionManager GetInstance()
         {

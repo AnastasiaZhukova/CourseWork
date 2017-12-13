@@ -1,24 +1,24 @@
-﻿using System;
-using BankSystem.Models.User.Account;
+﻿using BankSystem.Models.User.Account;
 using Database;
 
 namespace BankSystem.Models.DB
 {
     public class DbManager
     {
+        public const string SourceNotSetExceptionMessage = "Source provider not set";
         private static DbManager _instance;
-
-        private readonly UpdateHandler<Account> _accountUpdateHandler;
-        private volatile DataBase<Account> _accountDataBase;
-        private readonly UpdateHandler<User.User> _userUpdateHandler;
-        private volatile DataBase<User.User> _userDataBase;
-        private readonly UpdateHandler<Transaction.Transaction> _transactionUpdateHandler;
-        private volatile DataBase<Transaction.Transaction> _transactionDataBase;
-
-        private IDbSourceProvider _sourceProvider;
 
 
         private static readonly object SyncLock = new object();
+
+        private readonly UpdateHandler<Account> _accountUpdateHandler;
+        private readonly UpdateHandler<Transaction.Transaction> _transactionUpdateHandler;
+        private readonly UpdateHandler<User.User> _userUpdateHandler;
+        private volatile DataBase<Account> _accountDataBase;
+
+        private IDbSourceProvider _sourceProvider;
+        private volatile DataBase<Transaction.Transaction> _transactionDataBase;
+        private volatile DataBase<User.User> _userDataBase;
 
         private DbManager()
         {
@@ -44,7 +44,6 @@ namespace BankSystem.Models.DB
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <exception cref="InvalidSourceException"></exception>
         /// <exception cref="SourceNotSetException"></exception>
@@ -56,7 +55,6 @@ namespace BankSystem.Models.DB
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <exception cref="InvalidSourceException"></exception>
         /// <exception cref="SourceNotSetException"></exception>
@@ -72,16 +70,13 @@ namespace BankSystem.Models.DB
                 _accountDataBase = DbFactory.GetAccountDataBase(GetAccountDbSource());
 
                 if (_accountDataBase != null)
-                {
                     _accountDataBase.OnUpdate += _accountUpdateHandler.Save;
-                }
             }
 
             return _accountDataBase;
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <exception cref="InvalidSourceException"></exception>
         /// <exception cref="SourceNotSetException"></exception>
@@ -97,16 +92,13 @@ namespace BankSystem.Models.DB
                 _userDataBase = DbFactory.GetUserDataBase(GetUserDbSource());
 
                 if (_userDataBase != null)
-                {
                     _userDataBase.OnUpdate += _userUpdateHandler.Save;
-                }
             }
 
             return _userDataBase;
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <exception cref="InvalidSourceException"></exception>
         /// <exception cref="SourceNotSetException"></exception>
@@ -122,16 +114,11 @@ namespace BankSystem.Models.DB
                 _transactionDataBase = DbFactory.GetTransactionDataBase(GetTransactionDbSource());
 
                 if (_transactionDataBase != null)
-                {
                     _transactionDataBase.OnUpdate += _transactionUpdateHandler.Save;
-                }
             }
 
             return _transactionDataBase;
         }
-
-
-        public const string SourceNotSetExceptionMessage = "Source provider not set";
 
         private IDbSource GetAccountDbSource()
         {

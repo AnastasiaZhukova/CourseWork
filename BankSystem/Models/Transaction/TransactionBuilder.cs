@@ -2,11 +2,11 @@
 {
     public class TransactionBuilder
     {
+        internal int AccountId;
+        internal decimal Amount;
         internal int AtmId;
         internal int OwnerId;
-        internal int AccountId;
         internal TransactionType Type;
-        internal decimal Amount;
 
         public TransactionBuilder SetAtmId(int pAtmId)
         {

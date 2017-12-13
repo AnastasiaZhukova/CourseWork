@@ -8,17 +8,16 @@ namespace Database
     [KnownType(typeof(DbCollection<>))]
     public class DataBase<T> : IDataBase<T> where T : IIdentifiable
     {
-        [DataMember] private DbCollection<T> _dataBase;
-
         public delegate void DataBaseUpdate();
 
-        public event DataBaseUpdate OnUpdate;
-        public IDbSource DbSource { get; internal set; }
+        [DataMember] private DbCollection<T> _dataBase;
 
         internal DataBase()
         {
             _dataBase = new DbCollection<T>();
         }
+
+        public IDbSource DbSource { get; internal set; }
 
 
         public T Get(long pId)
@@ -44,5 +43,7 @@ namespace Database
         {
             return _dataBase.ToList();
         }
+
+        public event DataBaseUpdate OnUpdate;
     }
 }
