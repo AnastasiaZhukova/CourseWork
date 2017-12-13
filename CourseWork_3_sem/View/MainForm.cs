@@ -21,39 +21,74 @@ namespace CourseWork_3_sem.View
             Debug.Print("New presenter set" + presenter.GetType());
         }
 
-        public void SetMainTextBox(string text)
+        public void SetTimeText(string text)
         {
-            textBox_Main.Text = text;
+            label_Time.Text = text;
         }
 
-        public void SetLeftHighTextBox(string text)
+        public void SetDateText(string text)
         {
-            textBox_LeftHigh.Text = text;
+            label_Date.Text = text;
         }
 
-        public void SetLeftLowTextBox(string text)
+        public void SetWindowHighText(string text)
         {
-            textBox_LeftLow.Text = text;
+            label_WindowHigh.Text = text;
         }
 
-        public void SetRightLowTextBox(string text)
+        public void SetWindowLowText(string text)
         {
-            textBox_RightLow.Text = text;
+            label_WindowLow.Text = text;
         }
 
-        public void SetRightHighTextBox(string text)
+        public void SetLeftHighText(string text)
         {
-            textBox_RightHigh.Text = text;
+            text_LeftHigh.Text = text;
         }
 
-        public void SetInputTextBoxVisible(bool visible)
+        public void SetLeftLowText(string text)
         {
-            textBox_InputAmount.Visible = visible;
+            text_LeftLow.Text = text;
+        }
+
+        public void SetRightLowText(string text)
+        {
+            text_RightLow.Text = text;
+        }
+
+        public void SetRightHighText(string text)
+        {
+            text_RightHigh.Text = text;
+        }
+
+        public void SetInputFieldEnabled(bool enabled)
+        {
+            textBox_InputAmount.Visible = enabled;
         }
 
         public string GetInputTextBoxText()
         {
             return textBox_InputAmount.Text;
+        }
+
+        public void SetGetMoneyButtonEnabled(bool enabled)
+        {
+            button_TakeMoney.Enabled = enabled;
+        }
+
+        public string GetCardNumFieldText()
+        {
+            return textBox_CardNum.Text;
+        }
+
+        public string GetCardPinFieldText()
+        {
+            return textBox_Pin.Text;
+        }
+
+        public void SetInsertButtonEnabled(bool enabled)
+        {
+            button_InsertCard.Enabled = enabled;
         }
 
         public void SetLeftHighButtonEnabled(bool enabled)
@@ -86,6 +121,8 @@ namespace CourseWork_3_sem.View
             Show();
         }
 
+
+        /*****************************************************************/
         private void button_LeftHight_Click(object sender, EventArgs e)
         {
             Presenter.OnLeftHighButtonClicked();
@@ -112,9 +149,40 @@ namespace CourseWork_3_sem.View
             Presenter.OnRightLowButtonClicked();
         }
 
-        private void button_Exit_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Presenter.OnExitButtonClicked();
+        }
+
+        private void button_LH_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button_LL_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button_RH_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button_RL_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button_TakeMoney_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textBox_CardNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void textBox_CardPin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+        }
+
+        private void button_InsertCard_Click(object sender, EventArgs e)
+        {
         }
     }
 }

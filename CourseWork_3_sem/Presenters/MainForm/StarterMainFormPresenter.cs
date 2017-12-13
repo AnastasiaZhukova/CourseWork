@@ -14,10 +14,10 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         protected override void Initialize()
         {
-            _view.SetLeftHighTextBox("Withdraw");
-            _view.SetLeftLowTextBox("Deposit");
-            _view.SetRightLowTextBox("");
-            _view.SetRightHighTextBox("Show balance");
+            _view.SetLeftHighText("Withdraw");
+            _view.SetLeftLowText("Deposit");
+            _view.SetRightLowText("");
+            _view.SetRightHighText("Show balance");
         }
 
         public override void OnLeftHighButtonClicked()

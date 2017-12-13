@@ -7,19 +7,31 @@ namespace CourseWork_3_sem.View
     {
         void SetPresenter(IMainFormPresenter presenter);
 
-        void SetMainTextBox(string text);
-        void SetLeftHighTextBox(string text);
-        void SetLeftLowTextBox(string text);
-        void SetRightLowTextBox(string text);
-        void SetRightHighTextBox(string text);
+        void SetTimeText(string text);
+        void SetDateText(string text);
 
-        void SetInputTextBoxVisible(bool visible);
-        string GetInputTextBoxText();
+        void SetWindowHighText(string text);
+        void SetWindowLowText(string text);
+
+        void SetLeftHighText(string text);
+        void SetLeftLowText(string text);
+        void SetRightLowText(string text);
+        void SetRightHighText(string text);
 
         void SetLeftHighButtonEnabled(bool enabled);
         void SetLeftLowButtonEnabled(bool enabled);
         void SetRightLowButtonEnabled(bool enabled);
         void SetRigthHighButtonEnabled(bool enabled);
+
+        void SetInputFieldEnabled(bool enabled);
+        string GetInputTextBoxText();
+
+        void SetGetMoneyButtonEnabled(bool enabled);
+
+        string GetCardNumFieldText();
+        string GetCardPinFieldText();
+
+        void SetInsertButtonEnabled(bool enabled);
 
         void CloseForm();
         void ShowForm();

@@ -15,16 +15,16 @@ namespace CourseWork_3_sem.Presenters.MainForm
         protected override void Initialize()
         {
             _view.SetLeftHighButtonEnabled(false);
-            _view.SetLeftHighTextBox("");
+            _view.SetLeftHighText("");
 
             _view.SetLeftLowButtonEnabled(true);
-            _view.SetLeftLowTextBox("Return");
+            _view.SetLeftLowText("Return");
 
             _view.SetRightLowButtonEnabled(true);
-            _view.SetRightLowTextBox("Submit");
+            _view.SetRightLowText("Submit");
 
             _view.SetRigthHighButtonEnabled(false);
-            _view.SetRightHighTextBox("");
+            _view.SetRightHighText("");
         }
 
         public override void OnLeftHighButtonClicked()
