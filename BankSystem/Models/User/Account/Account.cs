@@ -83,5 +83,13 @@ namespace BankSystem.Models.User.Account
         {
             return Balance.Amount > pRequiredAmount;
         }
+
+
+        public override string ToString()
+        {
+            return "Account id: " + Id + "\n" +
+                   "Owner's id: " + OwnerId + "\n" +
+                   "Balance" + Balance;
+        }
     }
 }

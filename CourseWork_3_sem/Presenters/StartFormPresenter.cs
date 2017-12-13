@@ -38,8 +38,8 @@ namespace CourseWork_3_sem.Presenters
 
             var mainForm = new View.MainForm();
 
-            var startFormPresenter = new StarterMainFormPresenter(_atmManager, session, mainForm);
-            startFormPresenter.OnSessionFinished += FinishSession;
+            var startFormPresenter = new StarterMainFormPresenter(_atmManager, mainForm);
+            //startFormPresenter.OnSessionFinished += FinishSession;
             Application.Run(mainForm);
         }
 

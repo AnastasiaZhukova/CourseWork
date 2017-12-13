@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AmountInputDialog));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_InputAmount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -43,21 +43,21 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Input amount";
             // 
-            // textBox1
+            // textBox_InputAmount
             // 
-            this.textBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(25, 66);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(300, 36);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBox_InputAmount.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_InputAmount.Location = new System.Drawing.Point(25, 66);
+            this.textBox_InputAmount.Name = "textBox_InputAmount";
+            this.textBox_InputAmount.Size = new System.Drawing.Size(300, 36);
+            this.textBox_InputAmount.TabIndex = 1;
+            this.textBox_InputAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_InputAmount_KeyPress);
             // 
             // AmountInputDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(361, 156);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_InputAmount);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -65,7 +65,6 @@
             this.Name = "AmountInputDialog";
             this.ShowInTaskbar = false;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AmountInputDialog_FormClosed);
-            this.Leave += new System.EventHandler(this.AmountInputDialog_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -74,6 +73,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_InputAmount;
     }
 }

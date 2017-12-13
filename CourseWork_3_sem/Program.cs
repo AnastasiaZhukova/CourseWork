@@ -22,7 +22,7 @@ namespace CourseWork_3_sem
             //if (!TryInitialize()) return;
 
             var mainForm = new MainForm();
-            mainForm.SetPresenter(new StarterMainFormPresenter(null, null, mainForm));
+            mainForm.SetPresenter(new DepositMainFormPresenter(null, null, mainForm));
             Application.Run(mainForm);
         }
 

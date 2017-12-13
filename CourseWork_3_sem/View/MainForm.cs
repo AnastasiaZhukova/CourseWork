@@ -23,7 +23,10 @@ namespace CourseWork_3_sem.View
 
         public void SetTimeText(string text)
         {
-            label_Time.Text = text;
+            if (label_Time.InvokeRequired)
+            {
+                label_Time.Invoke(new Action(() => { label_Time.Text = text; }));
+            }
         }
 
         public void SetWindowHighText(string text)
@@ -58,7 +61,7 @@ namespace CourseWork_3_sem.View
 
         public void SetInsertMoneyFieldEnabled(bool enabled)
         {
-            textBox_InputAmount.Visible = enabled;
+            textBox_InputAmount.Enabled = enabled;
         }
 
         public void SetInsertMoneyFieldText(string text)

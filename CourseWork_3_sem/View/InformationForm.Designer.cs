@@ -42,6 +42,7 @@
             this.textBox_Info.ReadOnly = true;
             this.textBox_Info.Size = new System.Drawing.Size(393, 158);
             this.textBox_Info.TabIndex = 0;
+            this.textBox_Info.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button_Ok
             // 

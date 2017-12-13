@@ -1,4 +1,5 @@
-﻿using BankSystem.Atm;
+﻿using System;
+using BankSystem.Atm;
 using BankSystem.Models;
 using CourseWork_3_sem.View;
 
@@ -6,15 +7,15 @@ namespace CourseWork_3_sem.Presenters.MainForm
 {
     internal class StarterMainFormPresenter : MainFormPresenter
     {
-        public StarterMainFormPresenter(AtmManager atmManger, Session session, IMainForm view) : base(atmManger,
-            session, view)
+        public StarterMainFormPresenter(AtmManager atmManger, IMainForm view) : base(atmManger, null,
+            view)
         {
         }
 
         protected override void Initialize()
         {
-            _view.SetWindowHighText("");
-            _view.SetWindowLowText("");
+            _view.SetWindowHighText("International Bank");
+            _view.SetWindowLowText("Please, insert card");
 
             _view.SetLeftHighButtonEnabled(false);
             _view.SetLeftHighText("");
@@ -57,7 +58,18 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         public override void OnInsertCardButtonClicked()
         {
-            //TODO
+            var cardNumFieldText = _view.GetCardNumFieldText();
+            var cardPinFieldText = _view.GetCardPinFieldText();
+
+            int id;
+            int pin;
+            if (int.TryParse(cardNumFieldText, out id))
+            {
+                if (int.TryParse(cardPinFieldText, out pin))
+                {
+                    _atmManger.StartNewSession(id, pin);
+                }
+            }
         }
 
         public override void OnTakeMoneyButtonClicked()

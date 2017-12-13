@@ -42,6 +42,7 @@ namespace CourseWork_3_sem.Presenters.MainForm
             _view.SetInsertButtonEnabled(false);
         }
 
+        //not enabled
         public override void OnLeftHighButtonClicked()
         {
         }
@@ -49,37 +50,80 @@ namespace CourseWork_3_sem.Presenters.MainForm
         //Submit
         public override void OnLeftLowButtonClicked()
         {
-            decimal amount = new decimal(_totalAmount);
-            _session.MakeTransaction(TransactionType.Deposit, amount);
+            var amount = new decimal(_totalAmount);
+            _session.OnTransactionStarted += HandleTransactionStarted;
             _session.OnTransactionFinished += HandleTransactionFinished;
-            
-            
-            //TODO print check
+            _session.MakeTransaction(TransactionType.Deposit, amount);
         }
 
-        private void HandleTransactionFinished(int transactionId)
+        private void HandleTransactionStarted()
         {
-            
-            //TODO
-            _session.GetCheck(transactionId);
+            _session.OnTransactionStarted -= HandleTransactionStarted;
+            _view.SetWindowHighText("Wait...");
+        }
 
+
+        private int _transactionId;
+
+        private void HandleTransactionFinished(int transactionId, bool isSuccessful)
+        {
+            _view.SetWindowHighText("");
+
+            _session.OnTransactionFinished -= HandleTransactionFinished;
+
+            _transactionId = transactionId;
+            var printCheckDialog = new PrintCheckDialog();
+            if (isSuccessful)
+            {
+                printCheckDialog.OnYes += PrintCheck;
+                printCheckDialog.OnNo += Finish;
+            }
+            else
+            {
+                ShowError(_session.GetErrorMessage(transactionId));
+            }
+        }
+
+        private void PrintCheck()
+        {
+            var check = _session.GetCheck(_transactionId);
+            var printCheck = new CheckDialog();
+            printCheck.SetCheck(check);
+            printCheck.OnFinish += Finish;
+            printCheck.ShowDialog();
+        }
+
+        private void Finish()
+        {
+            _view.SetPresenter(new SessionFormPresenter(_atmManger, _session, _view));
+        }
+
+        private void ShowError(string text)
+        {
+            var infoDialog = new InformationForm();
+            infoDialog.SetInfoText(text);
+            infoDialog.OnFinish += Finish;
+            infoDialog.ShowDialog();
         }
 
 
         //Cancel
         public override void OnRightLowButtonClicked()
         {
-            //TODO
+            Finish();
         }
 
+        //not enabled
         public override void OnRightHighButtonClicked()
         {
         }
 
+        //not enabled
         public override void OnInsertCardButtonClicked()
         {
         }
 
+        //not enabled
         public override void OnTakeMoneyButtonClicked()
         {
         }

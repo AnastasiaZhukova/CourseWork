@@ -13,42 +13,73 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         protected override void Initialize()
         {
-            throw new System.NotImplementedException();
+            _view.SetWindowHighText("");
+            _view.SetWindowLowText("");
+
+            _view.SetLeftHighButtonEnabled(true);
+            _view.SetLeftHighText("Check");
+
+            _view.SetLeftLowButtonEnabled(true);
+            _view.SetLeftLowText("Screen");
+
+            _view.SetRightLowButtonEnabled(true);
+            _view.SetRightLowText("Cancel");
+
+            _view.SetRigthHighButtonEnabled(false);
+            _view.SetRightHighText("");
+
+            _view.SetInsertMoneyFieldEnabled(false);
+            _view.SetInsertMoneyFieldText("");
+            _view.SetGetMoneyButtonEnabled(false);
+
+            _view.SetCardNumFieldEnabled(false);
+            _view.SetCardPinFieldEnabled(false);
+            _view.SetInsertButtonEnabled(false);
         }
+
 
         public override void OnLeftHighButtonClicked()
         {
-            throw new System.NotImplementedException();
+            _view.SetLeftHighText("Balance: ");
+            _view.SetLeftLowText(_session.GetAccountBalance());
         }
 
         public override void OnLeftLowButtonClicked()
         {
-            throw new System.NotImplementedException();
+            var checkForm = new CheckDialog();
+            checkForm.OnFinish += Finish;
+            checkForm.SetCheck(_session.GetFullAccountInfo());
+            checkForm.ShowDialog();
         }
 
         public override void OnRightLowButtonClicked()
         {
-            throw new System.NotImplementedException();
+            Finish();
         }
 
+        private void Finish()
+        {
+            _view.SetPresenter(new SessionFormPresenter(_atmManger, _session, _view));
+        }
+
+        //not enabled
         public override void OnRightHighButtonClicked()
         {
-            throw new System.NotImplementedException();
         }
 
+        //not enabled
         public override void OnInsertCardButtonClicked()
         {
-            throw new System.NotImplementedException();
         }
 
+        //not enabled
         public override void OnTakeMoneyButtonClicked()
         {
-            throw new System.NotImplementedException();
         }
 
+        //not enabled
         public override void OnInsertMoney()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

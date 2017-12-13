@@ -93,7 +93,6 @@ namespace CourseWork_3_sem.View
             this.textBox_InputAmount.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_InputAmount.Location = new System.Drawing.Point(8, 38);
             this.textBox_InputAmount.Name = "textBox_InputAmount";
-            this.textBox_InputAmount.ReadOnly = true;
             this.textBox_InputAmount.Size = new System.Drawing.Size(387, 24);
             this.textBox_InputAmount.TabIndex = 1;
             this.textBox_InputAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_InputAmount_KeyPress);
@@ -116,13 +115,14 @@ namespace CourseWork_3_sem.View
             this.text_RightLow.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.text_RightLow.Enabled = false;
             this.text_RightLow.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.text_RightLow.Location = new System.Drawing.Point(319, 419);
+            this.text_RightLow.Location = new System.Drawing.Point(315, 419);
             this.text_RightLow.Name = "text_RightLow";
             this.text_RightLow.ReadOnly = true;
             this.text_RightLow.Size = new System.Drawing.Size(198, 36);
             this.text_RightLow.TabIndex = 12;
             this.text_RightLow.Tag = "RL";
             this.text_RightLow.Text = "RightLow";
+            this.text_RightLow.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // text_RightHigh
             // 
@@ -130,13 +130,14 @@ namespace CourseWork_3_sem.View
             this.text_RightHigh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.text_RightHigh.Enabled = false;
             this.text_RightHigh.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.text_RightHigh.Location = new System.Drawing.Point(319, 377);
+            this.text_RightHigh.Location = new System.Drawing.Point(315, 379);
             this.text_RightHigh.Name = "text_RightHigh";
             this.text_RightHigh.ReadOnly = true;
             this.text_RightHigh.Size = new System.Drawing.Size(198, 36);
             this.text_RightHigh.TabIndex = 12;
             this.text_RightHigh.Tag = "RH";
             this.text_RightHigh.Text = "RightHigh";
+            this.text_RightHigh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // text_LeftHigh
             // 
@@ -144,7 +145,7 @@ namespace CourseWork_3_sem.View
             this.text_LeftHigh.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.text_LeftHigh.Enabled = false;
             this.text_LeftHigh.Font = new System.Drawing.Font("Consolas", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.text_LeftHigh.Location = new System.Drawing.Point(73, 377);
+            this.text_LeftHigh.Location = new System.Drawing.Point(73, 379);
             this.text_LeftHigh.Name = "text_LeftHigh";
             this.text_LeftHigh.ReadOnly = true;
             this.text_LeftHigh.Size = new System.Drawing.Size(198, 36);
@@ -449,7 +450,7 @@ namespace CourseWork_3_sem.View
             this.button_RH.Enabled = false;
             this.button_RH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_RH.ForeColor = System.Drawing.Color.Orange;
-            this.button_RH.Location = new System.Drawing.Point(519, 370);
+            this.button_RH.Location = new System.Drawing.Point(519, 372);
             this.button_RH.Name = "button_RH";
             this.button_RH.Size = new System.Drawing.Size(59, 43);
             this.button_RH.TabIndex = 12;

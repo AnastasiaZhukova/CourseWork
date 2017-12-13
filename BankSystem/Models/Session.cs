@@ -6,7 +6,7 @@ namespace BankSystem.Models
 {
     public class Session
     {
-        public delegate void TransactionFinished(int transactionId);
+        public delegate void TransactionFinished(int transactionId, bool isSuccessful);
 
         public delegate void TransactionStarted();
 
@@ -38,6 +38,13 @@ namespace BankSystem.Models
         public event TransactionStarted OnTransactionStarted;
         public event TransactionFinished OnTransactionFinished;
 
+        public string GetFullAccountInfo()
+        {
+            if (_account == null || _user == null) throw new IllegalStateException();
+
+            return _account.ToString();
+        }
+
         public string GetAccountBalance()
         {
             if (_account == null || _user == null) throw new IllegalStateException();
@@ -65,9 +72,15 @@ namespace BankSystem.Models
             return _dbManager.GetTransactionDataBase().Get(transactionId).ToString();
         }
 
+        public string GetErrorMessage(int transactionId)
+        {
+            return _dbManager.GetTransactionDataBase().Get(transactionId).ErrorMessage;
+        }
+
         private void FinishTransaction(Transaction.Transaction transaction)
         {
-            OnTransactionFinished?.Invoke(transaction.GetId());
+            var success = string.IsNullOrEmpty(transaction.ErrorMessage);
+            OnTransactionFinished?.Invoke(transaction.GetId(), success);
         }
     }
 }
