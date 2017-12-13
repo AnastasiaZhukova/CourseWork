@@ -4,16 +4,26 @@ using CourseWork_3_sem.View;
 
 namespace CourseWork_3_sem.Presenters.MainForm
 {
-    public class ShowBalanceMainFormPresenter : MainFormPresenter
+    public class SessionFormPresenter : MainFormPresenter
     {
-        public ShowBalanceMainFormPresenter(AtmManager atmManger, Session session, IMainForm view) : base(atmManger,
-            session, view)
+        public SessionFormPresenter(AtmManager atmManger, Session session, IMainForm view) : base(atmManger, session,
+            view)
         {
         }
 
         protected override void Initialize()
         {
-            throw new System.NotImplementedException();
+            _view.SetLeftHighButtonEnabled(true);
+            _view.SetLeftHighText("Deposit");
+
+            _view.SetLeftLowButtonEnabled(true);
+            _view.SetLeftLowText("Withdraw");
+
+            _view.SetRightLowButtonEnabled(true);
+            _view.SetRightLowText("Return");
+
+            _view.SetRigthHighButtonEnabled(true);
+            _view.SetRightLowText("");
         }
 
         public override void OnLeftHighButtonClicked()

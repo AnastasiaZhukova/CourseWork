@@ -21,9 +21,6 @@ namespace CourseWork_3_sem
             Application.SetCompatibleTextRenderingDefault(false);
             //if (!TryInitialize()) return;
 
-            var startForm = new StartForm();
-
-            var startFormPresenter = new StartFormPresenter(_atmManager, startForm);
             var mainForm = new MainForm();
             mainForm.SetPresenter(new StarterMainFormPresenter(null, null, mainForm));
             Application.Run(mainForm);
@@ -36,7 +33,7 @@ namespace CourseWork_3_sem
         {
             try
             {
-                _atmManager = new AtmManager(ProgramSourceProvider.getAtmSource());
+                _atmManager = new AtmManager(ProgramSourceProvider.GetAtmSource());
             }
             catch (Exception)
             {

@@ -7,7 +7,7 @@ namespace CourseWork_3_sem
         //TODO implement
         private const string AtmSourcePath = "";
 
-        public static AtmSource getAtmSource()
+        public static AtmSource GetAtmSource()
         {
             return new AtmSource(AtmSourcePath);
         }

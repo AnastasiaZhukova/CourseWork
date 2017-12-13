@@ -43,18 +43,8 @@ namespace CourseWork_3_sem.View
             this.button_RightHigh = new System.Windows.Forms.Button();
             this.button_RightLow = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button_Insert = new System.Windows.Forms.Button();
-            this.label_Pin = new System.Windows.Forms.Label();
-            this.textBox_Pin = new System.Windows.Forms.TextBox();
-            this.label_Insert = new System.Windows.Forms.Label();
-            this.textBox_CardNumber = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.button_RL = new System.Windows.Forms.Button();
-            this.button_RH = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.button_InsertCard = new System.Windows.Forms.Button();
@@ -62,29 +52,38 @@ namespace CourseWork_3_sem.View
             this.textBox_CardPin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_CardNum = new System.Windows.Forms.TextBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button_Insert = new System.Windows.Forms.Button();
+            this.label_Pin = new System.Windows.Forms.Label();
+            this.textBox_Pin = new System.Windows.Forms.TextBox();
+            this.label_Insert = new System.Windows.Forms.Label();
+            this.textBox_CardNumber = new System.Windows.Forms.TextBox();
+            this.button_RL = new System.Windows.Forms.Button();
+            this.button_RH = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button_LH = new System.Windows.Forms.Button();
-            this.button_LL = new System.Windows.Forms.Button();
-            this.panel_Input = new System.Windows.Forms.Panel();
+            this.button_TakeMoney = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label_WindowHigh = new System.Windows.Forms.Label();
-            this.label_WindowLow = new System.Windows.Forms.Label();
-            this.button_TakeMoney = new System.Windows.Forms.Button();
             this.label_Time = new System.Windows.Forms.Label();
-            this.label_Date = new System.Windows.Forms.Label();
+            this.label_WindowLow = new System.Windows.Forms.Label();
+            this.label_WindowHigh = new System.Windows.Forms.Label();
+            this.button_LL = new System.Windows.Forms.Button();
+            this.button_LH = new System.Windows.Forms.Button();
+            this.panel_Input = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
-            this.panel_Input.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel_Input.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox_InputAmount
@@ -225,97 +224,6 @@ namespace CourseWork_3_sem.View
             this.panel2.Size = new System.Drawing.Size(382, 723);
             this.panel2.TabIndex = 13;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(256, 312);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(104, 104);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // button_Insert
-            // 
-            this.button_Insert.Font = new System.Drawing.Font("Consolas", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Insert.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button_Insert.Location = new System.Drawing.Point(20, 207);
-            this.button_Insert.Name = "button_Insert";
-            this.button_Insert.Size = new System.Drawing.Size(340, 38);
-            this.button_Insert.TabIndex = 4;
-            this.button_Insert.Text = "Insert";
-            this.button_Insert.UseVisualStyleBackColor = true;
-            // 
-            // label_Pin
-            // 
-            this.label_Pin.AutoSize = true;
-            this.label_Pin.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Pin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label_Pin.Location = new System.Drawing.Point(320, 127);
-            this.label_Pin.Name = "label_Pin";
-            this.label_Pin.Size = new System.Drawing.Size(40, 22);
-            this.label_Pin.TabIndex = 3;
-            this.label_Pin.Text = "Pin";
-            // 
-            // textBox_Pin
-            // 
-            this.textBox_Pin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_Pin.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_Pin.Location = new System.Drawing.Point(257, 152);
-            this.textBox_Pin.Name = "textBox_Pin";
-            this.textBox_Pin.PasswordChar = '*';
-            this.textBox_Pin.Size = new System.Drawing.Size(104, 31);
-            this.textBox_Pin.TabIndex = 2;
-            this.textBox_Pin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label_Insert
-            // 
-            this.label_Insert.AutoSize = true;
-            this.label_Insert.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Insert.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label_Insert.Location = new System.Drawing.Point(240, 66);
-            this.label_Insert.Name = "label_Insert";
-            this.label_Insert.Size = new System.Drawing.Size(120, 22);
-            this.label_Insert.TabIndex = 1;
-            this.label_Insert.Text = "Card number";
-            // 
-            // textBox_CardNumber
-            // 
-            this.textBox_CardNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_CardNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_CardNumber.Location = new System.Drawing.Point(20, 91);
-            this.textBox_CardNumber.Name = "textBox_CardNumber";
-            this.textBox_CardNumber.Size = new System.Drawing.Size(341, 30);
-            this.textBox_CardNumber.TabIndex = 0;
-            this.textBox_CardNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(146, 312);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(104, 104);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(290, 688);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(70, 23);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 7;
-            this.pictureBox3.TabStop = false;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Silver;
@@ -341,34 +249,6 @@ namespace CourseWork_3_sem.View
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
-            // 
-            // button_RL
-            // 
-            this.button_RL.Enabled = false;
-            this.button_RL.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_RL.ForeColor = System.Drawing.Color.Orange;
-            this.button_RL.Location = new System.Drawing.Point(519, 419);
-            this.button_RL.Name = "button_RL";
-            this.button_RL.Size = new System.Drawing.Size(59, 43);
-            this.button_RL.TabIndex = 10;
-            this.button_RL.Text = "___";
-            this.button_RL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button_RL.UseVisualStyleBackColor = true;
-            this.button_RL.Click += new System.EventHandler(this.button_RL_Click);
-            // 
-            // button_RH
-            // 
-            this.button_RH.Enabled = false;
-            this.button_RH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_RH.ForeColor = System.Drawing.Color.Orange;
-            this.button_RH.Location = new System.Drawing.Point(519, 370);
-            this.button_RH.Name = "button_RH";
-            this.button_RH.Size = new System.Drawing.Size(59, 43);
-            this.button_RH.TabIndex = 12;
-            this.button_RH.Text = "___";
-            this.button_RH.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button_RH.UseVisualStyleBackColor = true;
-            this.button_RH.Click += new System.EventHandler(this.button_RH_Click);
             // 
             // pictureBox5
             // 
@@ -459,6 +339,125 @@ namespace CourseWork_3_sem.View
             this.textBox_CardNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox_CardNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_CardNum_KeyPress);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(290, 688);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(70, 23);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 7;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
+            this.pictureBox2.Location = new System.Drawing.Point(146, 312);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(104, 104);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(256, 312);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(104, 104);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // button_Insert
+            // 
+            this.button_Insert.Font = new System.Drawing.Font("Consolas", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_Insert.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button_Insert.Location = new System.Drawing.Point(20, 207);
+            this.button_Insert.Name = "button_Insert";
+            this.button_Insert.Size = new System.Drawing.Size(340, 38);
+            this.button_Insert.TabIndex = 4;
+            this.button_Insert.Text = "Insert";
+            this.button_Insert.UseVisualStyleBackColor = true;
+            // 
+            // label_Pin
+            // 
+            this.label_Pin.AutoSize = true;
+            this.label_Pin.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Pin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label_Pin.Location = new System.Drawing.Point(320, 127);
+            this.label_Pin.Name = "label_Pin";
+            this.label_Pin.Size = new System.Drawing.Size(40, 22);
+            this.label_Pin.TabIndex = 3;
+            this.label_Pin.Text = "Pin";
+            // 
+            // textBox_Pin
+            // 
+            this.textBox_Pin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_Pin.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_Pin.Location = new System.Drawing.Point(257, 152);
+            this.textBox_Pin.Name = "textBox_Pin";
+            this.textBox_Pin.PasswordChar = '*';
+            this.textBox_Pin.Size = new System.Drawing.Size(104, 31);
+            this.textBox_Pin.TabIndex = 2;
+            this.textBox_Pin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label_Insert
+            // 
+            this.label_Insert.AutoSize = true;
+            this.label_Insert.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_Insert.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label_Insert.Location = new System.Drawing.Point(240, 66);
+            this.label_Insert.Name = "label_Insert";
+            this.label_Insert.Size = new System.Drawing.Size(120, 22);
+            this.label_Insert.TabIndex = 1;
+            this.label_Insert.Text = "Card number";
+            // 
+            // textBox_CardNumber
+            // 
+            this.textBox_CardNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_CardNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_CardNumber.Location = new System.Drawing.Point(20, 91);
+            this.textBox_CardNumber.Name = "textBox_CardNumber";
+            this.textBox_CardNumber.Size = new System.Drawing.Size(341, 30);
+            this.textBox_CardNumber.TabIndex = 0;
+            this.textBox_CardNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // button_RL
+            // 
+            this.button_RL.Enabled = false;
+            this.button_RL.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_RL.ForeColor = System.Drawing.Color.Orange;
+            this.button_RL.Location = new System.Drawing.Point(519, 419);
+            this.button_RL.Name = "button_RL";
+            this.button_RL.Size = new System.Drawing.Size(59, 43);
+            this.button_RL.TabIndex = 10;
+            this.button_RL.Text = "___";
+            this.button_RL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button_RL.UseVisualStyleBackColor = true;
+            this.button_RL.Click += new System.EventHandler(this.button_RL_Click);
+            // 
+            // button_RH
+            // 
+            this.button_RH.Enabled = false;
+            this.button_RH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_RH.ForeColor = System.Drawing.Color.Orange;
+            this.button_RH.Location = new System.Drawing.Point(519, 370);
+            this.button_RH.Name = "button_RH";
+            this.button_RH.Size = new System.Drawing.Size(59, 43);
+            this.button_RH.TabIndex = 12;
+            this.button_RH.Text = "___";
+            this.button_RH.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button_RH.UseVisualStyleBackColor = true;
+            this.button_RH.Click += new System.EventHandler(this.button_RH_Click);
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Silver;
@@ -471,42 +470,19 @@ namespace CourseWork_3_sem.View
             this.panel4.Size = new System.Drawing.Size(587, 722);
             this.panel4.TabIndex = 14;
             // 
-            // button_LH
+            // button_TakeMoney
             // 
-            this.button_LH.Enabled = false;
-            this.button_LH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_LH.ForeColor = System.Drawing.Color.Orange;
-            this.button_LH.Location = new System.Drawing.Point(3, 372);
-            this.button_LH.Name = "button_LH";
-            this.button_LH.Size = new System.Drawing.Size(59, 43);
-            this.button_LH.TabIndex = 16;
-            this.button_LH.Text = "___";
-            this.button_LH.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button_LH.UseVisualStyleBackColor = true;
-            this.button_LH.Click += new System.EventHandler(this.button_LH_Click);
-            // 
-            // button_LL
-            // 
-            this.button_LL.Enabled = false;
-            this.button_LL.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_LL.ForeColor = System.Drawing.Color.Orange;
-            this.button_LL.Location = new System.Drawing.Point(3, 419);
-            this.button_LL.Name = "button_LL";
-            this.button_LL.Size = new System.Drawing.Size(59, 43);
-            this.button_LL.TabIndex = 17;
-            this.button_LL.Text = "___";
-            this.button_LL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button_LL.UseVisualStyleBackColor = true;
-            this.button_LL.Click += new System.EventHandler(this.button_LL_Click);
-            // 
-            // panel_Input
-            // 
-            this.panel_Input.Controls.Add(this.label_InputAmount);
-            this.panel_Input.Controls.Add(this.textBox_InputAmount);
-            this.panel_Input.Location = new System.Drawing.Point(150, 509);
-            this.panel_Input.Name = "panel_Input";
-            this.panel_Input.Size = new System.Drawing.Size(411, 78);
-            this.panel_Input.TabIndex = 18;
+            this.button_TakeMoney.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_TakeMoney.Enabled = false;
+            this.button_TakeMoney.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button_TakeMoney.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_TakeMoney.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_TakeMoney.Location = new System.Drawing.Point(26, 612);
+            this.button_TakeMoney.Name = "button_TakeMoney";
+            this.button_TakeMoney.Size = new System.Drawing.Size(535, 66);
+            this.button_TakeMoney.TabIndex = 20;
+            this.button_TakeMoney.UseVisualStyleBackColor = false;
+            this.button_TakeMoney.Click += new System.EventHandler(this.button_TakeMoney_Click);
             // 
             // panel1
             // 
@@ -529,7 +505,6 @@ namespace CourseWork_3_sem.View
             // 
             this.panel5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.label_Date);
             this.panel5.Controls.Add(this.label_Time);
             this.panel5.Controls.Add(this.label_WindowLow);
             this.panel5.Controls.Add(this.label_WindowHigh);
@@ -538,17 +513,15 @@ namespace CourseWork_3_sem.View
             this.panel5.Size = new System.Drawing.Size(578, 362);
             this.panel5.TabIndex = 18;
             // 
-            // label_WindowHigh
+            // label_Time
             // 
-            this.label_WindowHigh.BackColor = System.Drawing.Color.Transparent;
-            this.label_WindowHigh.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_WindowHigh.Location = new System.Drawing.Point(66, 76);
-            this.label_WindowHigh.Name = "label_WindowHigh";
-            this.label_WindowHigh.Size = new System.Drawing.Size(460, 120);
-            this.label_WindowHigh.TabIndex = 0;
-            this.label_WindowHigh.Text = "VeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryV" +
-    "eryVeryVeryVeryVeryVery";
-            this.label_WindowHigh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_Time.AutoSize = true;
+            this.label_Time.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_Time.Location = new System.Drawing.Point(8, 8);
+            this.label_Time.Name = "label_Time";
+            this.label_Time.Size = new System.Drawing.Size(54, 19);
+            this.label_Time.TabIndex = 2;
+            this.label_Time.Text = "15:03";
             // 
             // label_WindowLow
             // 
@@ -562,39 +535,54 @@ namespace CourseWork_3_sem.View
     "eryVeryVeryVeryVeryVery";
             this.label_WindowLow.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button_TakeMoney
+            // label_WindowHigh
             // 
-            this.button_TakeMoney.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button_TakeMoney.Enabled = false;
-            this.button_TakeMoney.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button_TakeMoney.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_TakeMoney.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_TakeMoney.Location = new System.Drawing.Point(26, 612);
-            this.button_TakeMoney.Name = "button_TakeMoney";
-            this.button_TakeMoney.Size = new System.Drawing.Size(535, 66);
-            this.button_TakeMoney.TabIndex = 20;
-            this.button_TakeMoney.UseVisualStyleBackColor = false;
-            this.button_TakeMoney.Click += new System.EventHandler(this.button_TakeMoney_Click);
+            this.label_WindowHigh.BackColor = System.Drawing.Color.Transparent;
+            this.label_WindowHigh.Font = new System.Drawing.Font("Consolas", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_WindowHigh.Location = new System.Drawing.Point(66, 76);
+            this.label_WindowHigh.Name = "label_WindowHigh";
+            this.label_WindowHigh.Size = new System.Drawing.Size(460, 120);
+            this.label_WindowHigh.TabIndex = 0;
+            this.label_WindowHigh.Text = "VeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryV" +
+    "eryVeryVeryVeryVeryVery";
+            this.label_WindowHigh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label_Time
+            // button_LL
             // 
-            this.label_Time.AutoSize = true;
-            this.label_Time.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Time.Location = new System.Drawing.Point(8, 8);
-            this.label_Time.Name = "label_Time";
-            this.label_Time.Size = new System.Drawing.Size(54, 19);
-            this.label_Time.TabIndex = 2;
-            this.label_Time.Text = "15:03";
+            this.button_LL.Enabled = false;
+            this.button_LL.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_LL.ForeColor = System.Drawing.Color.Orange;
+            this.button_LL.Location = new System.Drawing.Point(3, 419);
+            this.button_LL.Name = "button_LL";
+            this.button_LL.Size = new System.Drawing.Size(59, 43);
+            this.button_LL.TabIndex = 17;
+            this.button_LL.Text = "___";
+            this.button_LL.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button_LL.UseVisualStyleBackColor = true;
+            this.button_LL.Click += new System.EventHandler(this.button_LL_Click);
             // 
-            // label_Date
+            // button_LH
             // 
-            this.label_Date.AutoSize = true;
-            this.label_Date.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Date.Location = new System.Drawing.Point(69, 8);
-            this.label_Date.Name = "label_Date";
-            this.label_Date.Size = new System.Drawing.Size(99, 19);
-            this.label_Date.TabIndex = 3;
-            this.label_Date.Text = "12.12.2017";
+            this.button_LH.Enabled = false;
+            this.button_LH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_LH.ForeColor = System.Drawing.Color.Orange;
+            this.button_LH.Location = new System.Drawing.Point(3, 372);
+            this.button_LH.Name = "button_LH";
+            this.button_LH.Size = new System.Drawing.Size(59, 43);
+            this.button_LH.TabIndex = 16;
+            this.button_LH.Text = "___";
+            this.button_LH.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button_LH.UseVisualStyleBackColor = true;
+            this.button_LH.Click += new System.EventHandler(this.button_LH_Click);
+            // 
+            // panel_Input
+            // 
+            this.panel_Input.Controls.Add(this.label_InputAmount);
+            this.panel_Input.Controls.Add(this.textBox_InputAmount);
+            this.panel_Input.Location = new System.Drawing.Point(150, 509);
+            this.panel_Input.Name = "panel_Input";
+            this.panel_Input.Size = new System.Drawing.Size(411, 78);
+            this.panel_Input.TabIndex = 18;
             // 
             // MainForm
             // 
@@ -611,21 +599,21 @@ namespace CourseWork_3_sem.View
             this.Text = "ATM";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
-            this.panel_Input.ResumeLayout(false);
-            this.panel_Input.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel_Input.ResumeLayout(false);
+            this.panel_Input.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -668,7 +656,6 @@ namespace CourseWork_3_sem.View
         private Panel panel1;
         private Panel panel5;
         private Button button_TakeMoney;
-        private Label label_Date;
         private Label label_Time;
         private Label label_WindowLow;
         private Label label_WindowHigh;

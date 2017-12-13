@@ -1,5 +1,4 @@
-﻿using System;
-using BankSystem.Atm;
+﻿using BankSystem.Atm;
 using BankSystem.Models;
 using CourseWork_3_sem.View;
 
@@ -14,31 +13,59 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         protected override void Initialize()
         {
-            _view.SetLeftHighText("Withdraw");
-            _view.SetLeftLowText("Deposit");
+            _view.SetWindowHighText("");
+            _view.SetWindowLowText("");
+
+            _view.SetLeftHighButtonEnabled(false);
+            _view.SetLeftHighText("");
+
+            _view.SetLeftLowButtonEnabled(false);
+            _view.SetLeftLowText("");
+
+            _view.SetRightLowButtonEnabled(false);
             _view.SetRightLowText("");
-            _view.SetRightHighText("Show balance");
+
+            _view.SetRigthHighButtonEnabled(false);
+            _view.SetRightHighText("");
+
+            _view.SetInsertMoneyFieldEnabled(false);
+            _view.SetInsertMoneyFieldText("");
+            _view.SetGetMoneyButtonEnabled(false);
+
+            _view.SetCardNumFieldEnabled(true);
+            _view.SetCardNumFieldText("");
+            _view.SetCardPinFieldEnabled(true);
+            _view.SetCarPinFieldText("");
+            _view.SetInsertButtonEnabled(true);
         }
 
         public override void OnLeftHighButtonClicked()
         {
-            //TODO replace
-            _view.SetPresenter(new DepositMainFormPresenter(_atmManger, _session, _view));
         }
 
         public override void OnLeftLowButtonClicked()
         {
-            throw new NotImplementedException();
         }
 
         public override void OnRightLowButtonClicked()
         {
-            throw new NotImplementedException();
         }
 
         public override void OnRightHighButtonClicked()
         {
-            throw new NotImplementedException();
+        }
+
+        public override void OnInsertCardButtonClicked()
+        {
+            //TODO
+        }
+
+        public override void OnTakeMoneyButtonClicked()
+        {
+        }
+
+        public override void OnInsertMoney()
+        {
         }
     }
 }

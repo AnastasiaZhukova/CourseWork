@@ -7,6 +7,8 @@
         void OnRightLowButtonClicked();
         void OnRightHighButtonClicked();
 
-        void OnExitButtonClicked();
+        void OnInsertCardButtonClicked();
+        void OnTakeMoneyButtonClicked();
+        void OnInsertMoney();
     }
 }

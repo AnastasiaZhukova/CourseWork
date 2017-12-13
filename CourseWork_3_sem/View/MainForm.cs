@@ -26,11 +26,6 @@ namespace CourseWork_3_sem.View
             label_Time.Text = text;
         }
 
-        public void SetDateText(string text)
-        {
-            label_Date.Text = text;
-        }
-
         public void SetWindowHighText(string text)
         {
             label_WindowHigh.Text = text;
@@ -61,12 +56,17 @@ namespace CourseWork_3_sem.View
             text_RightHigh.Text = text;
         }
 
-        public void SetInputFieldEnabled(bool enabled)
+        public void SetInsertMoneyFieldEnabled(bool enabled)
         {
             textBox_InputAmount.Visible = enabled;
         }
 
-        public string GetInputTextBoxText()
+        public void SetInsertMoneyFieldText(string text)
+        {
+            textBox_InputAmount.Text = text;
+        }
+
+        public string GetInsertMoneyTextBoxText()
         {
             return textBox_InputAmount.Text;
         }
@@ -76,9 +76,29 @@ namespace CourseWork_3_sem.View
             button_TakeMoney.Enabled = enabled;
         }
 
+        public void SetCardNumFieldEnabled(bool enabled)
+        {
+            textBox_CardNum.Enabled = enabled;
+        }
+
+        public void SetCardNumFieldText(string text)
+        {
+            textBox_CardNum.Text = text;
+        }
+
         public string GetCardNumFieldText()
         {
             return textBox_CardNum.Text;
+        }
+
+        public void SetCardPinFieldEnabled(bool enabled)
+        {
+            textBox_CardPin.Enabled = enabled;
+        }
+
+        public void SetCarPinFieldText(string text)
+        {
+            textBox_CardPin.Text = text;
         }
 
         public string GetCardPinFieldText()

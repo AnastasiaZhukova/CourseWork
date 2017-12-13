@@ -8,7 +8,6 @@ namespace CourseWork_3_sem.View
         void SetPresenter(IMainFormPresenter presenter);
 
         void SetTimeText(string text);
-        void SetDateText(string text);
 
         void SetWindowHighText(string text);
         void SetWindowLowText(string text);
@@ -23,12 +22,18 @@ namespace CourseWork_3_sem.View
         void SetRightLowButtonEnabled(bool enabled);
         void SetRigthHighButtonEnabled(bool enabled);
 
-        void SetInputFieldEnabled(bool enabled);
-        string GetInputTextBoxText();
+        void SetInsertMoneyFieldEnabled(bool enabled);
+        void SetInsertMoneyFieldText(string text);
+        string GetInsertMoneyTextBoxText();
 
         void SetGetMoneyButtonEnabled(bool enabled);
 
+        void SetCardNumFieldEnabled(bool enabled);
+        void SetCardNumFieldText(string text);
         string GetCardNumFieldText();
+
+        void SetCardPinFieldEnabled(bool enabled);
+        void SetCarPinFieldText(string text);
         string GetCardPinFieldText();
 
         void SetInsertButtonEnabled(bool enabled);

@@ -1,11 +1,19 @@
-﻿using BankSystem.Atm;
+﻿using System.Threading;
+using BankSystem.Atm;
 using BankSystem.Models;
+using BankSystem.Utils;
 using CourseWork_3_sem.View;
 
 namespace CourseWork_3_sem.Presenters.MainForm
 {
     public abstract class MainFormPresenter : IMainFormPresenter
     {
+        protected static bool IsTimeUpdateSet;
+
+        internal event FinishSession OnSessionFinished;
+
+        internal delegate void FinishSession();
+
         protected AtmManager _atmManger;
         protected Session _session;
         protected IMainForm _view;
@@ -15,6 +23,19 @@ namespace CourseWork_3_sem.Presenters.MainForm
             _atmManger = atmManger;
             _session = session;
             _view = view;
+
+            if (IsTimeUpdateSet == false)
+            {
+                new Thread(() =>
+                {
+                    while (true)
+                    {
+                        UpdateTime();
+                    }
+                }).Start();
+
+                IsTimeUpdateSet = true;
+            }
 
             Initialize();
         }
@@ -29,14 +50,15 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         public abstract void OnRightHighButtonClicked();
 
-        public void OnExitButtonClicked()
+        public abstract void OnInsertCardButtonClicked();
+
+        public abstract void OnTakeMoneyButtonClicked();
+
+        public abstract void OnInsertMoney();
+
+        protected void UpdateTime()
         {
-            OnSessionFinished?.Invoke();
-            _view.CloseForm();
+            _view.SetTimeText(System.DateTime.UtcNow.ToString());
         }
-
-        internal event FinishSession OnSessionFinished;
-
-        internal delegate void FinishSession();
     }
 }

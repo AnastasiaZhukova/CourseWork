@@ -49,20 +49,45 @@
     <Compile Include="Presenters\MainForm\DepositMainFormPresenter.cs" />
     <Compile Include="Presenters\MainForm\IMainFormPresenter.cs" />
     <Compile Include="Presenters\MainForm\MainFormPresenter.cs" />
+    <Compile Include="Presenters\MainForm\SessionMainFormPresenter.cs" />
     <Compile Include="Presenters\MainForm\ShowBalanceMainFormPresenter.cs" />
     <Compile Include="Presenters\MainForm\StarterMainFormPresenter.cs" />
     <Compile Include="Presenters\MainForm\WithdrawMainFormPresenter.cs" />
+    <Compile Include="View\AmountInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AmountInputDialog.Designer.cs">
+      <DependentUpon>AmountInputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CheckDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CheckDialog.Designer.cs">
+      <DependentUpon>CheckDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IMainForm.cs" />
     <Compile Include="Presenters\StartFormPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramSourceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\InformationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InformationForm.Designer.cs">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\IStartForm.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PrintCheckDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PrintCheckDialog.Designer.cs">
+      <DependentUpon>PrintCheckDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\StartForm.cs">
       <SubType>Form</SubType>
@@ -79,8 +104,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\AmountInputDialog.resx">
+      <DependentUpon>AmountInputDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CheckDialog.resx">
+      <DependentUpon>CheckDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\InformationForm.resx">
+      <DependentUpon>InformationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PrintCheckDialog.resx">
+      <DependentUpon>PrintCheckDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
