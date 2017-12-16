@@ -53,7 +53,6 @@ namespace CourseWork_3_sem.View
         private void AmountInputDialog_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (!_isSubmitted) OnReject?.Invoke();
-            Close();
         }
     }
 }

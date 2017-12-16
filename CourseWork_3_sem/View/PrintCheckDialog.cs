@@ -15,24 +15,34 @@ namespace CourseWork_3_sem.View
             InitializeComponent();
         }
 
+        private bool _isOk;
+
         private void button_Yes_Click(object sender, EventArgs e)
         {
+            _isOk = true;
             OnYes?.Invoke();
+            FinishForm();
         }
 
         private void button_No_Click(object sender, EventArgs e)
         {
-            OnNo?.Invoke();
+            FinishForm();
         }
 
         private void PrintCheckDialog_Leave(object sender, EventArgs e)
         {
-            OnNo?.Invoke();
+            FinishForm();
         }
 
         private void PrintCheckDialog_FormClosed(object sender, FormClosedEventArgs e)
         {
-            OnNo?.Invoke();
+            FinishForm();
+        }
+
+        private void FinishForm()
+        {
+            if (!_isOk) OnNo?.Invoke();
+            Close();
         }
     }
 }

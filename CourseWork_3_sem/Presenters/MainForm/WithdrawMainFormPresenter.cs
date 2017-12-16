@@ -22,53 +22,26 @@ namespace CourseWork_3_sem.Presenters.MainForm
             View.SetLeftHighButtonEnabled(false);
             View.SetLeftHighText("");
 
-            View.SetLeftLowButtonEnabled(true);
-            View.SetLeftLowText("Submit");
+            View.SetLeftLowButtonEnabled(false);
+            View.SetLeftLowText("");
 
             View.SetRightLowButtonEnabled(true);
             View.SetRightLowText("Cancel");
 
-            View.SetRigthHighButtonEnabled(false);
-            View.SetRightHighText("");
+            View.SetRigthHighButtonEnabled(true);
+            View.SetRightHighText("Input");
 
             View.SetInsertMoneyFieldEnabled(false);
             View.SetInsertMoneyFieldText("");
+
             View.SetGetMoneyButtonEnabled(false);
+            View.SetGetMoneyButtonText("");
 
             View.SetCardNumFieldEnabled(false);
             View.SetCardPinFieldEnabled(false);
             View.SetInsertButtonEnabled(false);
-
-            GetAmount();
         }
 
-        private void GetAmount()
-        {
-            var getAmountDialog = new AmountInputDialog();
-            getAmountDialog.OnSubmit += HandleOnSubmitEvent;
-            getAmountDialog.OnReject += HandleOnRejectEvent;
-            getAmountDialog.ShowDialog();
-        }
-
-        private void HandleOnSubmitEvent(string amount)
-        {
-            if (decimal.TryParse(amount, out _totalAmount))
-            {
-                View.SetWindowHighText("Withdraw " + _totalAmount + " ?");
-            }
-            else
-            {
-                var infoDialog = new InformationForm();
-                infoDialog.OnFinish += Finish;
-                infoDialog.SetInfoText("Wrong input");
-                infoDialog.ShowDialog();
-            }
-        }
-
-        private void HandleOnRejectEvent()
-        {
-            Finish();
-        }
 
         private void Finish()
         {
@@ -80,11 +53,19 @@ namespace CourseWork_3_sem.Presenters.MainForm
         {
         }
 
+        //Submit
         public override void OnLeftLowButtonClicked()
         {
-            Session.OnTransactionStarted += HandleTransactionStarted;
-            Session.OnTransactionFinished += HandleTransactionFinished;
-            Session.MakeTransaction(TransactionType.Withdraw, _totalAmount);
+            if (_totalAmount <= 0)
+            {
+                ShowError("Invalid amount");
+            }
+            else
+            {
+                Session.OnTransactionStarted += HandleTransactionStarted;
+                Session.OnTransactionFinished += HandleTransactionFinished;
+                Session.MakeTransaction(TransactionType.Withdraw, _totalAmount);
+            }
         }
 
         private void HandleTransactionStarted()
@@ -106,6 +87,7 @@ namespace CourseWork_3_sem.Presenters.MainForm
             {
                 View.SetWindowHighText("Please, take money");
                 View.SetGetMoneyButtonEnabled(true);
+                View.SetGetMoneyButtonText("Take money");
             }
             else
             {
@@ -130,15 +112,50 @@ namespace CourseWork_3_sem.Presenters.MainForm
             infoDialog.ShowDialog();
         }
 
+        //Cancel
         public override void OnRightLowButtonClicked()
         {
             Finish();
         }
 
-        //not enabled
+        //Input
         public override void OnRightHighButtonClicked()
         {
+            GetAmount();
         }
+
+        private void GetAmount()
+        {
+            var getAmountDialog = new AmountInputDialog();
+            getAmountDialog.OnSubmit += HandleOnSubmitEvent;
+            getAmountDialog.OnReject += HandleOnRejectEvent;
+            getAmountDialog.ShowDialog();
+        }
+
+
+        private void HandleOnSubmitEvent(string amount)
+        {
+            View.SetLeftLowButtonEnabled(true);
+            View.SetLeftLowText("Submit");
+
+            View.SetRightHighText("");
+            View.SetRigthHighButtonEnabled(false);
+
+            if (decimal.TryParse(amount, out _totalAmount))
+            {
+                View.SetWindowHighText("Do you want to withdraw " + _totalAmount + " ?");
+            }
+            else
+            {
+                ShowError("Wrong input");
+            }
+        }
+
+        private void HandleOnRejectEvent()
+        {
+            Finish();
+        }
+
 
         //not enabled
         public override void OnInsertCardButtonClicked()

@@ -70,5 +70,6 @@ namespace CourseWork_3_sem.Presenters.MainForm
         {
             View.SetTimeText(DateTime.UtcNow.ToString());
         }
+        
     }
 }

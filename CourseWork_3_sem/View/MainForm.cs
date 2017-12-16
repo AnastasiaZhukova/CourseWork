@@ -31,12 +31,26 @@ namespace CourseWork_3_sem.View
 
         public void SetWindowHighText(string text)
         {
-            label_WindowHigh.Text = text;
+            if (label_WindowHigh.InvokeRequired)
+            {
+                label_WindowHigh.Invoke(new Action(() => { label_WindowHigh.Text = text; }));
+            }
+            else
+            {
+                label_WindowHigh.Text = text;
+            }
         }
 
         public void SetWindowLowText(string text)
         {
-            label_WindowLow.Text = text;
+            if (label_WindowLow.InvokeRequired)
+            {
+                label_WindowLow.Invoke(new Action(() => { label_WindowLow.Text = text; }));
+            }
+            else
+            {
+                label_WindowLow.Text = text;
+            }
         }
 
         public void SetLeftHighText(string text)
@@ -76,7 +90,19 @@ namespace CourseWork_3_sem.View
 
         public void SetGetMoneyButtonEnabled(bool enabled)
         {
-            button_TakeMoney.Enabled = enabled;
+            if (button_TakeMoney.InvokeRequired)
+            {
+                button_TakeMoney.Invoke(new Action(() => { button_TakeMoney.Enabled = enabled; }));
+            }
+            else
+            {
+                button_TakeMoney.Enabled = enabled;
+            }
+        }
+
+        public void SetGetMoneyButtonText(string text)
+        {
+            button_TakeMoney.Text = text;
         }
 
         public void SetCardNumFieldEnabled(bool enabled)
@@ -205,16 +231,15 @@ namespace CourseWork_3_sem.View
         private void textBox_CardPin_KeyPress(object sender, KeyPressEventArgs e)
         {
             var eKeyChar = e.KeyChar;
+            if (textBox_CardPin.Text.Length >= 4 && !char.IsControl(eKeyChar))
+            {
+                e.Handled = true;
+            }
             if (!char.IsDigit(eKeyChar) && !char.IsControl(eKeyChar))
             {
                 e.Handled = true;
             }
             if (char.IsControl(eKeyChar) && eKeyChar != '\b')
-            {
-                e.Handled = true;
-            }
-            //todo check
-            if (textBox_Pin.Text.Length > 4)
             {
                 e.Handled = true;
             }

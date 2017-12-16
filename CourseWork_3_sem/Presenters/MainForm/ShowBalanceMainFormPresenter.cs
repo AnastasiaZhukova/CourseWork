@@ -30,7 +30,9 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
             View.SetInsertMoneyFieldEnabled(false);
             View.SetInsertMoneyFieldText("");
+
             View.SetGetMoneyButtonEnabled(false);
+            View.SetGetMoneyButtonText("");
 
             View.SetCardNumFieldEnabled(false);
             View.SetCardPinFieldEnabled(false);
@@ -43,13 +45,21 @@ namespace CourseWork_3_sem.Presenters.MainForm
         {
             var checkForm = new CheckDialog();
             checkForm.OnFinish += Finish;
-            checkForm.SetCheck(Session.GetFullAccountInfo());
+            checkForm.SetCheck(Session.GetAccountBalanceOnCheck());
             checkForm.ShowDialog();
         }
 
         //Screen
         public override void OnLeftLowButtonClicked()
         {
+            View.SetLeftHighButtonEnabled(false);
+            View.SetLeftHighText("");
+
+            View.SetLeftLowButtonEnabled(false);
+            View.SetLeftLowText("");
+
+            View.SetRightLowText("Return");
+
             View.SetWindowHighText("Balance: ");
             View.SetWindowLowText(Session.GetAccountBalance());
         }

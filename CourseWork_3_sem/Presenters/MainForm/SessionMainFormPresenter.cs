@@ -31,7 +31,9 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
             View.SetInsertMoneyFieldEnabled(false);
             View.SetInsertMoneyFieldText("");
+            
             View.SetGetMoneyButtonEnabled(false);
+            View.SetGetMoneyButtonText("");
 
             View.SetCardNumFieldEnabled(false);
             View.SetCardPinFieldEnabled(false);

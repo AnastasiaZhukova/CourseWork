@@ -36,6 +36,7 @@ namespace CourseWork_3_sem.Presenters.MainForm
             View.SetInsertMoneyFieldText("");
 
             View.SetGetMoneyButtonEnabled(false);
+            View.SetGetMoneyButtonText("");
 
             View.SetCardNumFieldEnabled(false);
             View.SetCardPinFieldEnabled(false);
@@ -50,7 +51,13 @@ namespace CourseWork_3_sem.Presenters.MainForm
         //Submit
         public override void OnLeftLowButtonClicked()
         {
+            if (_totalAmount <= 0)
+            {
+                ShowError("Invalid amount of money");
+                return;
+            }
             var amount = new decimal(_totalAmount);
+
             Session.OnTransactionStarted += HandleTransactionStarted;
             Session.OnTransactionFinished += HandleTransactionFinished;
             Session.MakeTransaction(TransactionType.Deposit, amount);
@@ -67,21 +74,22 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         private void HandleTransactionFinished(int transactionId, bool isSuccessful)
         {
-            View.SetWindowHighText("");
-
             Session.OnTransactionFinished -= HandleTransactionFinished;
 
             _transactionId = transactionId;
-            var printCheckDialog = new PrintCheckDialog();
-            if (isSuccessful)
+            if (!isSuccessful)
             {
-                printCheckDialog.OnYes += PrintCheck;
-                printCheckDialog.OnNo += Finish;
+                View.SetWindowHighText("Error");
+                ShowError(Session.GetErrorMessage(transactionId));
             }
             else
             {
-                ShowError(Session.GetErrorMessage(transactionId));
+                View.SetWindowHighText("Success");
             }
+            var printCheckDialog = new PrintCheckDialog();
+            printCheckDialog.OnYes += PrintCheck;
+            printCheckDialog.OnNo += Finish;
+            printCheckDialog.ShowDialog();
         }
 
         private void PrintCheck()
@@ -131,6 +139,7 @@ namespace CourseWork_3_sem.Presenters.MainForm
         public override void OnInsertMoney()
         {
             if (!double.TryParse(View.GetInsertMoneyTextBoxText(), out var amount)) return;
+            if (amount <= 0) return;
             _totalAmount += amount;
             //update inputed amount
             View.SetWindowLowText(_totalAmount.ToString());

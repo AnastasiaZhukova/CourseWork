@@ -80,7 +80,7 @@ namespace BankSystem.Models.User.Account
                                   " Required amount " + pAmount;
 
                     Debug.Print("Caught no money exception: " + Thread.CurrentThread.Name
-                                + "\n" + message);
+                                + Environment.NewLine + message);
 
                     throw new NotEnoughMoneyException(message);
                 }
@@ -92,7 +92,7 @@ namespace BankSystem.Models.User.Account
 
         private bool IsEnoughMoney(decimal pRequiredAmount)
         {
-            return Balance.Amount > pRequiredAmount;
+            return Balance.Amount >= pRequiredAmount;
         }
 
 

@@ -119,7 +119,7 @@ namespace BankSystem.Models.Transaction
         private int GenerateId()
         {
             //TODO generate id
-            return (int) (GetCurrentTime() / (1000 * _user.GetHashCode()));
+            return (int) GetCurrentTime() / _user.GetHashCode();
         }
 
         internal delegate void FinishTransaction(Transaction transaction);

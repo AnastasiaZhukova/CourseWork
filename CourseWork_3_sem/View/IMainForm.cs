@@ -27,6 +27,7 @@ namespace CourseWork_3_sem.View
         string GetInsertMoneyTextBoxText();
 
         void SetGetMoneyButtonEnabled(bool enabled);
+        void SetGetMoneyButtonText(string text);
 
         void SetCardNumFieldEnabled(bool enabled);
         void SetCardNumFieldText(string text);
