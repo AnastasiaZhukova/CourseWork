@@ -12,7 +12,7 @@ namespace Database
 
         [DataMember] private DbCollection<T> _dataBase;
 
-        internal DataBase()
+        public DataBase()
         {
             _dataBase = new DbCollection<T>();
         }

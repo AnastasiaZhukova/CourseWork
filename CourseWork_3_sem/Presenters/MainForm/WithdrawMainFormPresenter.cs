@@ -16,28 +16,28 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         protected override void Initialize()
         {
-            _view.SetWindowHighText("");
-            _view.SetWindowLowText("");
+            View.SetWindowHighText("");
+            View.SetWindowLowText("");
 
-            _view.SetLeftHighButtonEnabled(false);
-            _view.SetLeftHighText("");
+            View.SetLeftHighButtonEnabled(false);
+            View.SetLeftHighText("");
 
-            _view.SetLeftLowButtonEnabled(true);
-            _view.SetLeftLowText("Submit");
+            View.SetLeftLowButtonEnabled(true);
+            View.SetLeftLowText("Submit");
 
-            _view.SetRightLowButtonEnabled(true);
-            _view.SetRightLowText("Cancel");
+            View.SetRightLowButtonEnabled(true);
+            View.SetRightLowText("Cancel");
 
-            _view.SetRigthHighButtonEnabled(false);
-            _view.SetRightHighText("");
+            View.SetRigthHighButtonEnabled(false);
+            View.SetRightHighText("");
 
-            _view.SetInsertMoneyFieldEnabled(false);
-            _view.SetInsertMoneyFieldText("");
-            _view.SetGetMoneyButtonEnabled(false);
+            View.SetInsertMoneyFieldEnabled(false);
+            View.SetInsertMoneyFieldText("");
+            View.SetGetMoneyButtonEnabled(false);
 
-            _view.SetCardNumFieldEnabled(false);
-            _view.SetCardPinFieldEnabled(false);
-            _view.SetInsertButtonEnabled(false);
+            View.SetCardNumFieldEnabled(false);
+            View.SetCardPinFieldEnabled(false);
+            View.SetInsertButtonEnabled(false);
 
             GetAmount();
         }
@@ -54,7 +54,7 @@ namespace CourseWork_3_sem.Presenters.MainForm
         {
             if (decimal.TryParse(amount, out _totalAmount))
             {
-                _view.SetWindowHighText("Withdraw " + _totalAmount + " ?");
+                View.SetWindowHighText("Withdraw " + _totalAmount + " ?");
             }
             else
             {
@@ -72,7 +72,7 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         private void Finish()
         {
-            _view.SetPresenter(new SessionFormPresenter(_atmManger, _session, _view));
+            View.SetPresenter(new SessionMainFormPresenter(AtmManger, Session, View));
         }
 
         //not enabled
@@ -82,38 +82,40 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         public override void OnLeftLowButtonClicked()
         {
-            _session.OnTransactionStarted += HandleTransactionStarted;
-            _session.OnTransactionFinished += HandleTransactionFinished;
-            _session.MakeTransaction(TransactionType.Withdraw, _totalAmount);
+            Session.OnTransactionStarted += HandleTransactionStarted;
+            Session.OnTransactionFinished += HandleTransactionFinished;
+            Session.MakeTransaction(TransactionType.Withdraw, _totalAmount);
         }
 
         private void HandleTransactionStarted()
         {
+            View.SetWindowHighText("Wait...");
         }
 
         private int _transactionId;
 
         private void HandleTransactionFinished(int transactionId, bool isSuccessful)
         {
-            _view.SetWindowHighText("");
+            View.SetWindowHighText("");
 
-            _session.OnTransactionFinished -= HandleTransactionFinished;
+            Session.OnTransactionFinished -= HandleTransactionFinished;
 
             _transactionId = transactionId;
 
             if (isSuccessful)
             {
-                _view.SetGetMoneyButtonEnabled(true);
+                View.SetWindowHighText("Please, take money");
+                View.SetGetMoneyButtonEnabled(true);
             }
             else
             {
-                ShowError(_session.GetErrorMessage(transactionId));
+                ShowError(Session.GetErrorMessage(transactionId));
             }
         }
 
         private void PrintCheck()
         {
-            var check = _session.GetCheck(_transactionId);
+            var check = Session.GetCheck(_transactionId);
             var printCheck = new CheckDialog();
             printCheck.SetCheck(check);
             printCheck.OnFinish += Finish;
@@ -145,10 +147,14 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         public override void OnTakeMoneyButtonClicked()
         {
+            View.SetGetMoneyButtonEnabled(false);
+
             var printCheckDialog = new PrintCheckDialog();
 
             printCheckDialog.OnYes += PrintCheck;
             printCheckDialog.OnNo += Finish;
+
+            printCheckDialog.ShowDialog();
         }
 
         //not enabled

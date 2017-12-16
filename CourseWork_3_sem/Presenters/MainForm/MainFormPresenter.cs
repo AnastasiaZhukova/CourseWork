@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Windows.Forms;
 using BankSystem.Atm;
 using BankSystem.Models;
 using CourseWork_3_sem.View;
@@ -8,32 +9,36 @@ namespace CourseWork_3_sem.Presenters.MainForm
 {
     public abstract class MainFormPresenter : IMainFormPresenter
     {
-        private static bool IsTimeUpdateSet;
+        private static bool _isTimeUpdateSet;
 
-        protected AtmManager _atmManger;
-        protected Session _session;
-        protected IMainForm _view;
-        
-        protected MainFormPresenter(){}
+        protected readonly AtmManager AtmManger;
+        protected readonly Session Session;
+        protected readonly IMainForm View;
+
+        protected MainFormPresenter()
+        {
+        }
+
+        private Thread _updateTimeThread;
 
         protected MainFormPresenter(AtmManager atmManger, Session session, IMainForm view)
         {
-            _atmManger = atmManger;
-            _session = session;
-            _view = view;
+            AtmManger = atmManger;
+            Session = session;
+            View = view;
 
-            if (IsTimeUpdateSet == false)
+            if (_isTimeUpdateSet == false)
             {
-                new Thread(() =>
+                _updateTimeThread = new Thread(() =>
                 {
-                    
                     while (true)
                     {
                         UpdateTime();
                     }
-                }).Start();
+                });
+                _updateTimeThread.Start();
 
-                IsTimeUpdateSet = true;
+                _isTimeUpdateSet = true;
             }
 
             Initialize();
@@ -55,9 +60,15 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         public abstract void OnInsertMoney();
 
+        public void OnExit()
+        {
+            Application.Exit();
+            Environment.Exit(0);
+        }
+
         private void UpdateTime()
         {
-            _view.SetTimeText(DateTime.UtcNow.ToString());
+            View.SetTimeText(DateTime.UtcNow.ToString());
         }
     }
 }

@@ -14,68 +14,88 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         protected override void Initialize()
         {
-            _view.SetWindowHighText("International Bank");
-            _view.SetWindowLowText("Please, insert card");
+            View.SetWindowHighText("International Bank");
+            View.SetWindowLowText("Please, insert card");
 
-            _view.SetLeftHighButtonEnabled(false);
-            _view.SetLeftHighText("");
+            View.SetLeftHighButtonEnabled(false);
+            View.SetLeftHighText("");
 
-            _view.SetLeftLowButtonEnabled(false);
-            _view.SetLeftLowText("");
+            View.SetLeftLowButtonEnabled(false);
+            View.SetLeftLowText("");
 
-            _view.SetRightLowButtonEnabled(false);
-            _view.SetRightLowText("");
+            View.SetRightLowButtonEnabled(false);
+            View.SetRightLowText("");
 
-            _view.SetRigthHighButtonEnabled(false);
-            _view.SetRightHighText("");
+            View.SetRigthHighButtonEnabled(false);
+            View.SetRightHighText("");
 
-            _view.SetInsertMoneyFieldEnabled(false);
-            _view.SetInsertMoneyFieldText("");
-            _view.SetGetMoneyButtonEnabled(false);
+            View.SetInsertMoneyFieldEnabled(false);
+            View.SetInsertMoneyFieldText("");
+            View.SetGetMoneyButtonEnabled(false);
 
-            _view.SetCardNumFieldEnabled(true);
-            _view.SetCardNumFieldText("");
-            _view.SetCardPinFieldEnabled(true);
-            _view.SetCarPinFieldText("");
-            _view.SetInsertButtonEnabled(true);
+            View.SetCardNumFieldEnabled(true);
+            View.SetCardNumFieldText("");
+            View.SetCardPinFieldEnabled(true);
+            View.SetCarPinFieldText("");
+            View.SetInsertButtonEnabled(true);
         }
 
+        //not enabled
         public override void OnLeftHighButtonClicked()
         {
         }
 
+        //not enabled
         public override void OnLeftLowButtonClicked()
         {
         }
 
+        //not enabled
         public override void OnRightLowButtonClicked()
         {
         }
 
+        //not enabled
         public override void OnRightHighButtonClicked()
         {
         }
 
         public override void OnInsertCardButtonClicked()
         {
-            var cardNumFieldText = _view.GetCardNumFieldText();
-            var cardPinFieldText = _view.GetCardPinFieldText();
+            var cardNumFieldText = View.GetCardNumFieldText();
+            var cardPinFieldText = View.GetCardPinFieldText();
 
-            int id;
-            int pin;
-            if (int.TryParse(cardNumFieldText, out id))
+            if (!int.TryParse(cardNumFieldText, out var id) ||
+                !int.TryParse(cardPinFieldText, out var pin))
             {
-                if (int.TryParse(cardPinFieldText, out pin))
-                {
-                    _atmManger.StartNewSession(id, pin);
-                }
+                ShowError();
+                return;
+            }
+
+            try
+            {
+                var session = AtmManger.StartNewSession(id, pin);
+                View.SetPresenter(new SessionMainFormPresenter(AtmManger, session, View));
+            }
+            catch (Exception)
+            {
+                ShowError();
             }
         }
 
+        private static void ShowError()
+        {
+            var form = new InformationForm();
+            form.SetInfoText("Invalid Input");
+            form.ShowDialog();
+        }
+
+        //not enabled
         public override void OnTakeMoneyButtonClicked()
         {
         }
 
+        //not enabled
         public override void OnInsertMoney()
         {
         }

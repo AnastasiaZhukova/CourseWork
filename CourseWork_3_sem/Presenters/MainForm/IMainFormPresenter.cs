@@ -10,5 +10,7 @@
         void OnInsertCardButtonClicked();
         void OnTakeMoneyButtonClicked();
         void OnInsertMoney();
+
+        void OnExit();
     }
 }

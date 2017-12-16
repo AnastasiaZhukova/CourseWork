@@ -21,16 +21,22 @@ namespace CourseWork_3_sem.View
 
         private void button_Take_Click(object sender, EventArgs e)
         {
-            OnFinish?.Invoke();
+            FinishForm();
         }
 
         private void CheckDialog_Leave(object sender, EventArgs e)
         {
-            OnFinish?.Invoke();
+            FinishForm();
         }
 
         private void CheckDialog_FormClosed(object sender, FormClosedEventArgs e)
         {
+            FinishForm();
+        }
+
+        private void FinishForm()
+        {
+            Close();
             OnFinish?.Invoke();
         }
     }

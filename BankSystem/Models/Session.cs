@@ -45,6 +45,13 @@ namespace BankSystem.Models
             return _account.ToString();
         }
 
+        public string GetUserName()
+        {
+            if (_account == null || _user == null) throw new IllegalStateException();
+
+            return _user.Name;
+        }
+
         public string GetAccountBalance()
         {
             if (_account == null || _user == null) throw new IllegalStateException();
@@ -52,19 +59,25 @@ namespace BankSystem.Models
             return _account.Balance.ToString();
         }
 
+        public string GetAccountBalanceOnCheck()
+        {
+            if (_account == null || _user == null) throw new IllegalStateException();
+
+            return _account.ToString();
+        }
+
         public void MakeTransaction(TransactionType type, decimal amount)
         {
             _transactionManager.OnTransactionFinished += FinishTransaction;
+            OnTransactionStarted?.Invoke();
 
-            _transactionManager.CreateTransaction()
-                .SetAccountId(_account.GetId())
+            var transactionBuilder = _transactionManager.CreateTransaction();
+            transactionBuilder.SetAccountId(_account.GetId())
                 .SetAmount(amount)
                 .SetAtmId(_atm.GetId())
                 .SetOwnerId(_user.GetId())
                 .SetType(type)
                 .Start();
-
-            OnTransactionStarted?.Invoke();
         }
 
         public string GetCheck(int transactionId)

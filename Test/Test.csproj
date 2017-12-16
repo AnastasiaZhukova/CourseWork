@@ -46,6 +46,7 @@
     <Compile Include="DBManagerTests.cs" />
     <Compile Include="DBTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempTest.cs" />
     <Compile Include="TestDBSourceProvider.cs" />
     <Compile Include="TestSource.cs" />
   </ItemGroup>

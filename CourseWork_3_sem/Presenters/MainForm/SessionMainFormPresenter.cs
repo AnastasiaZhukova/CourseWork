@@ -4,60 +4,62 @@ using CourseWork_3_sem.View;
 
 namespace CourseWork_3_sem.Presenters.MainForm
 {
-    public class SessionFormPresenter : MainFormPresenter
+    public class SessionMainFormPresenter : MainFormPresenter
     {
-        public SessionFormPresenter(AtmManager atmManger, Session session, IMainForm view) : base(atmManger, session,
+        public SessionMainFormPresenter(AtmManager atmManger, Session session, IMainForm view) : base(atmManger,
+            session,
             view)
         {
         }
 
         protected override void Initialize()
         {
-            _view.SetWindowHighText("International Bank");
-            _view.SetWindowLowText("Perform some operations...");
+            View.SetWindowHighText("International Bank");
+            View.SetWindowLowText("Hello " + Session.GetUserName());
 
-            _view.SetLeftHighButtonEnabled(true);
-            _view.SetLeftHighText("Withdraw");
+            View.SetLeftHighButtonEnabled(true);
+            View.SetLeftHighText("Withdraw");
 
-            _view.SetLeftLowButtonEnabled(true);
-            _view.SetLeftLowText("Deposit");
+            View.SetLeftLowButtonEnabled(true);
+            View.SetLeftLowText("Deposit");
 
-            _view.SetRightLowButtonEnabled(true);
-            _view.SetRightLowText("Return");
+            View.SetRightLowButtonEnabled(true);
+            View.SetRightLowText("Return");
 
-            _view.SetRigthHighButtonEnabled(true);
-            _view.SetRightHighText("Balance");
+            View.SetRigthHighButtonEnabled(true);
+            View.SetRightHighText("Balance");
 
-            _view.SetInsertMoneyFieldEnabled(false);
-            _view.SetInsertMoneyFieldText("");
-            _view.SetGetMoneyButtonEnabled(false);
+            View.SetInsertMoneyFieldEnabled(false);
+            View.SetInsertMoneyFieldText("");
+            View.SetGetMoneyButtonEnabled(false);
 
-            _view.SetCardNumFieldEnabled(false);
-            _view.SetCardPinFieldEnabled(false);
-            _view.SetInsertButtonEnabled(false);
+            View.SetCardNumFieldEnabled(false);
+            View.SetCardPinFieldEnabled(false);
+            View.SetInsertButtonEnabled(false);
         }
 
         //Withdraw
         public override void OnLeftHighButtonClicked()
         {
-            _view.SetPresenter(new WithdrawMainFormPresenter(_atmManger, _session, _view));
+            View.SetPresenter(new WithdrawMainFormPresenter(AtmManger, Session, View));
         }
 
         //Deposit
         public override void OnLeftLowButtonClicked()
         {
-            _view.SetPresenter(new DepositMainFormPresenter(_atmManger, _session, _view));
+            View.SetPresenter(new DepositMainFormPresenter(AtmManger, Session, View));
         }
 
         //Return
         public override void OnRightLowButtonClicked()
         {
-            _view.SetPresenter(new SessionFormPresenter(_atmManger, _session, _view));
+            View.SetPresenter(new StarterMainFormPresenter(AtmManger, View));
         }
 
         //Balance
         public override void OnRightHighButtonClicked()
         {
+            View.SetPresenter(new ShowBalanceMainFormPresenter(AtmManger, Session, View));
         }
 
         //not enabled

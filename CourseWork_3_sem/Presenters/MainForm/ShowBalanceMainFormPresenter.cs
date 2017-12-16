@@ -13,43 +13,45 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         protected override void Initialize()
         {
-            _view.SetWindowHighText("");
-            _view.SetWindowLowText("");
+            View.SetWindowHighText("On check or screen?");
+            View.SetWindowLowText("");
 
-            _view.SetLeftHighButtonEnabled(true);
-            _view.SetLeftHighText("Check");
+            View.SetLeftHighButtonEnabled(true);
+            View.SetLeftHighText("Check");
 
-            _view.SetLeftLowButtonEnabled(true);
-            _view.SetLeftLowText("Screen");
+            View.SetLeftLowButtonEnabled(true);
+            View.SetLeftLowText("Screen");
 
-            _view.SetRightLowButtonEnabled(true);
-            _view.SetRightLowText("Cancel");
+            View.SetRightLowButtonEnabled(true);
+            View.SetRightLowText("Cancel");
 
-            _view.SetRigthHighButtonEnabled(false);
-            _view.SetRightHighText("");
+            View.SetRigthHighButtonEnabled(false);
+            View.SetRightHighText("");
 
-            _view.SetInsertMoneyFieldEnabled(false);
-            _view.SetInsertMoneyFieldText("");
-            _view.SetGetMoneyButtonEnabled(false);
+            View.SetInsertMoneyFieldEnabled(false);
+            View.SetInsertMoneyFieldText("");
+            View.SetGetMoneyButtonEnabled(false);
 
-            _view.SetCardNumFieldEnabled(false);
-            _view.SetCardPinFieldEnabled(false);
-            _view.SetInsertButtonEnabled(false);
+            View.SetCardNumFieldEnabled(false);
+            View.SetCardPinFieldEnabled(false);
+            View.SetInsertButtonEnabled(false);
         }
 
 
+        //Check
         public override void OnLeftHighButtonClicked()
-        {
-            _view.SetLeftHighText("Balance: ");
-            _view.SetLeftLowText(_session.GetAccountBalance());
-        }
-
-        public override void OnLeftLowButtonClicked()
         {
             var checkForm = new CheckDialog();
             checkForm.OnFinish += Finish;
-            checkForm.SetCheck(_session.GetFullAccountInfo());
+            checkForm.SetCheck(Session.GetFullAccountInfo());
             checkForm.ShowDialog();
+        }
+
+        //Screen
+        public override void OnLeftLowButtonClicked()
+        {
+            View.SetWindowHighText("Balance: ");
+            View.SetWindowLowText(Session.GetAccountBalance());
         }
 
         public override void OnRightLowButtonClicked()
@@ -59,7 +61,7 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         private void Finish()
         {
-            _view.SetPresenter(new SessionFormPresenter(_atmManger, _session, _view));
+            View.SetPresenter(new SessionMainFormPresenter(AtmManger, Session, View));
         }
 
         //not enabled

@@ -3,9 +3,11 @@ using System.Runtime.Serialization.Json;
 
 namespace BankSystem.Atm.Utils
 {
-    internal class AtmSerializer
+    //todo make internal
+    
+    public class AtmSerializer
     {
-        internal Models.Atm Read(Stream pSourceStream)
+        public Models.Atm Read(Stream pSourceStream)
         {
             var jsonFormatter = new DataContractJsonSerializer(typeof(Models.Atm));
             using (pSourceStream)
@@ -16,7 +18,7 @@ namespace BankSystem.Atm.Utils
             }
         }
 
-        internal void Write(Models.Atm pObject, Stream pTargetStream)
+        public void Write(Models.Atm pObject, Stream pTargetStream)
         {
             var jsonFormatter = new DataContractJsonSerializer(typeof(Models.Atm));
             using (pTargetStream)

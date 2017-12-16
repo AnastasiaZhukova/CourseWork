@@ -17,29 +17,29 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         protected override void Initialize()
         {
-            _view.SetWindowHighText("Insert Money");
-            _view.SetWindowLowText("Total: " + _totalAmount);
+            View.SetWindowHighText("Insert Money");
+            View.SetWindowLowText("Total: " + _totalAmount);
 
-            _view.SetLeftHighButtonEnabled(false);
-            _view.SetLeftHighText("");
+            View.SetLeftHighButtonEnabled(false);
+            View.SetLeftHighText("");
 
-            _view.SetLeftLowButtonEnabled(true);
-            _view.SetLeftLowText("Submit");
+            View.SetLeftLowButtonEnabled(true);
+            View.SetLeftLowText("Submit");
 
-            _view.SetRightLowButtonEnabled(true);
-            _view.SetRightLowText("Cancel");
+            View.SetRightLowButtonEnabled(true);
+            View.SetRightLowText("Cancel");
 
-            _view.SetRigthHighButtonEnabled(false);
-            _view.SetRightHighText("");
+            View.SetRigthHighButtonEnabled(false);
+            View.SetRightHighText("");
 
-            _view.SetInsertMoneyFieldEnabled(true);
-            _view.SetInsertMoneyFieldText("");
+            View.SetInsertMoneyFieldEnabled(true);
+            View.SetInsertMoneyFieldText("");
 
-            _view.SetGetMoneyButtonEnabled(false);
+            View.SetGetMoneyButtonEnabled(false);
 
-            _view.SetCardNumFieldEnabled(false);
-            _view.SetCardPinFieldEnabled(false);
-            _view.SetInsertButtonEnabled(false);
+            View.SetCardNumFieldEnabled(false);
+            View.SetCardPinFieldEnabled(false);
+            View.SetInsertButtonEnabled(false);
         }
 
         //not enabled
@@ -51,15 +51,15 @@ namespace CourseWork_3_sem.Presenters.MainForm
         public override void OnLeftLowButtonClicked()
         {
             var amount = new decimal(_totalAmount);
-            _session.OnTransactionStarted += HandleTransactionStarted;
-            _session.OnTransactionFinished += HandleTransactionFinished;
-            _session.MakeTransaction(TransactionType.Deposit, amount);
+            Session.OnTransactionStarted += HandleTransactionStarted;
+            Session.OnTransactionFinished += HandleTransactionFinished;
+            Session.MakeTransaction(TransactionType.Deposit, amount);
         }
 
         private void HandleTransactionStarted()
         {
-            _session.OnTransactionStarted -= HandleTransactionStarted;
-            _view.SetWindowHighText("Wait...");
+            Session.OnTransactionStarted -= HandleTransactionStarted;
+            View.SetWindowHighText("Wait...");
         }
 
 
@@ -67,9 +67,9 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         private void HandleTransactionFinished(int transactionId, bool isSuccessful)
         {
-            _view.SetWindowHighText("");
+            View.SetWindowHighText("");
 
-            _session.OnTransactionFinished -= HandleTransactionFinished;
+            Session.OnTransactionFinished -= HandleTransactionFinished;
 
             _transactionId = transactionId;
             var printCheckDialog = new PrintCheckDialog();
@@ -80,13 +80,13 @@ namespace CourseWork_3_sem.Presenters.MainForm
             }
             else
             {
-                ShowError(_session.GetErrorMessage(transactionId));
+                ShowError(Session.GetErrorMessage(transactionId));
             }
         }
 
         private void PrintCheck()
         {
-            var check = _session.GetCheck(_transactionId);
+            var check = Session.GetCheck(_transactionId);
             var printCheck = new CheckDialog();
             printCheck.SetCheck(check);
             printCheck.OnFinish += Finish;
@@ -95,7 +95,7 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         private void Finish()
         {
-            _view.SetPresenter(new SessionFormPresenter(_atmManger, _session, _view));
+            View.SetPresenter(new SessionMainFormPresenter(AtmManger, Session, View));
         }
 
         private void ShowError(string text)
@@ -130,11 +130,12 @@ namespace CourseWork_3_sem.Presenters.MainForm
 
         public override void OnInsertMoney()
         {
-            double amount;
-            if (Double.TryParse(_view.GetInsertMoneyTextBoxText(), out amount))
-            {
-                _totalAmount += amount;
-            }
+            if (!double.TryParse(View.GetInsertMoneyTextBoxText(), out var amount)) return;
+            _totalAmount += amount;
+            //update inputed amount
+            View.SetWindowLowText(_totalAmount.ToString());
+            //clear input box
+            View.SetInsertMoneyFieldText("");
         }
     }
 }

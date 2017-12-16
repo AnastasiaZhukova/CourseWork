@@ -11,6 +11,12 @@ namespace BankSystem.Atm
             _atm = atm;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="accountId"></param>
+        /// <returns></returns>
+        /// /// <exception cref="IllegalStateException"></exception>
         public Session StartNewSession(int accountId)
         {
             return new Session(_atm, accountId);

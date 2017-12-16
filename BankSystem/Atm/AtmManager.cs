@@ -17,8 +17,8 @@ namespace BankSystem.Atm
         /// <exception cref="InitializationException"></exception>
         public AtmManager(AtmSource atmSource)
         {
-            _sessionManager = new SessionManager(_atm);
             Initialize(atmSource);
+            _sessionManager = new SessionManager(_atm);
         }
 
         public Session StartNewSession(int accountId, int pin)

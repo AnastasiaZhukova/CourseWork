@@ -25,6 +25,7 @@ namespace Test
         private TestSource _userSource;
         private TestSource _accountSource;
 
+        //TODO change directories
         private const string UserFile =
             "C:\\Users\\Asus\\Documents\\Visual Studio 2017\\Projects\\CourseWork_3_sem\\Test\\users.json";
 

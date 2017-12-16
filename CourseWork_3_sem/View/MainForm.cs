@@ -13,7 +13,7 @@ namespace CourseWork_3_sem.View
             InitializeComponent();
         }
 
-        internal IMainFormPresenter Presenter { get; set; }
+        private IMainFormPresenter Presenter { get; set; }
 
         public void SetPresenter(IMainFormPresenter presenter)
         {
@@ -23,7 +23,7 @@ namespace CourseWork_3_sem.View
 
         public void SetTimeText(string text)
         {
-            if (label_Time.InvokeRequired)
+            if (label_Time.InvokeRequired && !label_Time.Disposing)
             {
                 label_Time.Invoke(new Action(() => { label_Time.Text = text; }));
             }
@@ -106,7 +106,7 @@ namespace CourseWork_3_sem.View
 
         public string GetCardPinFieldText()
         {
-            return textBox_Pin.Text;
+            return textBox_CardPin.Text;
         }
 
         public void SetInsertButtonEnabled(bool enabled)
@@ -116,22 +116,22 @@ namespace CourseWork_3_sem.View
 
         public void SetLeftHighButtonEnabled(bool enabled)
         {
-            button_LeftHight.Enabled = enabled;
+            button_LH.Enabled = enabled;
         }
 
         public void SetLeftLowButtonEnabled(bool enabled)
         {
-            button_LeftLow.Enabled = enabled;
+            button_LL.Enabled = enabled;
         }
 
         public void SetRightLowButtonEnabled(bool enabled)
         {
-            button_RightLow.Enabled = enabled;
+            button_RL.Enabled = enabled;
         }
 
         public void SetRigthHighButtonEnabled(bool enabled)
         {
-            button_RightHigh.Enabled = enabled;
+            button_RH.Enabled = enabled;
         }
 
         public void CloseForm()
@@ -146,66 +146,93 @@ namespace CourseWork_3_sem.View
 
 
         /*****************************************************************/
-        private void button_LeftHight_Click(object sender, EventArgs e)
-        {
-            Presenter.OnLeftHighButtonClicked();
-        }
-
-        private void button_LeftLow_Click(object sender, EventArgs e)
-        {
-            Presenter.OnLeftLowButtonClicked();
-        }
-
         private void textBox_InputAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar))
+            var eKeyChar = e.KeyChar;
+            if (!char.IsDigit(eKeyChar) && !char.IsControl(eKeyChar))
+            {
                 e.Handled = true;
-        }
+            }
+            if (char.IsControl(eKeyChar) && eKeyChar != '\b')
+            {
+                e.Handled = true;
+            }
 
-        private void button_RightHigh_Click(object sender, EventArgs e)
-        {
-            Presenter.OnRightHighButtonClicked();
-        }
+            if (!char.IsControl(eKeyChar) || eKeyChar != '\r') return;
 
-        private void button_RightLow_Click(object sender, EventArgs e)
-        {
-            Presenter.OnRightLowButtonClicked();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+            e.Handled = true;
+            Presenter.OnInsertMoney();
         }
 
         private void button_LH_Click(object sender, EventArgs e)
         {
+            Presenter.OnLeftHighButtonClicked();
         }
 
         private void button_LL_Click(object sender, EventArgs e)
         {
+            Presenter.OnLeftLowButtonClicked();
         }
 
         private void button_RH_Click(object sender, EventArgs e)
         {
+            Presenter.OnRightHighButtonClicked();
         }
 
         private void button_RL_Click(object sender, EventArgs e)
         {
+            Presenter.OnRightLowButtonClicked();
         }
 
         private void button_TakeMoney_Click(object sender, EventArgs e)
         {
+            Presenter.OnTakeMoneyButtonClicked();
         }
 
         private void textBox_CardNum_KeyPress(object sender, KeyPressEventArgs e)
         {
+            var eKeyChar = e.KeyChar;
+            if (!char.IsDigit(eKeyChar) && !char.IsControl(eKeyChar))
+            {
+                e.Handled = true;
+            }
+            if (char.IsControl(eKeyChar) && eKeyChar != '\b')
+            {
+                e.Handled = true;
+            }
         }
 
         private void textBox_CardPin_KeyPress(object sender, KeyPressEventArgs e)
         {
+            var eKeyChar = e.KeyChar;
+            if (!char.IsDigit(eKeyChar) && !char.IsControl(eKeyChar))
+            {
+                e.Handled = true;
+            }
+            if (char.IsControl(eKeyChar) && eKeyChar != '\b')
+            {
+                e.Handled = true;
+            }
+            //todo check
+            if (textBox_Pin.Text.Length > 4)
+            {
+                e.Handled = true;
+            }
         }
 
         private void button_InsertCard_Click(object sender, EventArgs e)
         {
+            Presenter.OnInsertCardButtonClicked();
+        }
+
+        private void MainForm_Leave(object sender, EventArgs e)
+        {
+            Presenter.OnExit();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Presenter.OnExit();
         }
     }
 }

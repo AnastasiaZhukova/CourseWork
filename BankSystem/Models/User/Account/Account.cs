@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Threading;
@@ -15,6 +16,16 @@ namespace BankSystem.Models.User.Account
             Id = id;
             OwnerId = ownerId;
             Balance = balance;
+        }
+
+        //todo remove
+        public Account(int id, int pin, long ownerId, Balance balance, List<int> transactionIds)
+        {
+            Id = id;
+            Pin = pin;
+            OwnerId = ownerId;
+            Balance = balance;
+            TransactionIds = transactionIds;
         }
 
         [DataMember]
@@ -87,9 +98,9 @@ namespace BankSystem.Models.User.Account
 
         public override string ToString()
         {
-            return "Account id: " + Id + "\n" +
-                   "Owner's id: " + OwnerId + "\n" +
-                   "Balance" + Balance;
+            return "Account id: " + Id + Environment.NewLine +
+                   "Owner's id: " + OwnerId + Environment.NewLine +
+                   "Balance: " + Balance;
         }
     }
 }

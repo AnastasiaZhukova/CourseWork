@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using System.Text;
 using BankSystem.Utils;
 using Database;
@@ -17,6 +18,21 @@ namespace BankSystem.Models.Transaction
             AccountId = pBuilder.AccountId;
             Type = pBuilder.Type;
             Amount = pBuilder.Amount;
+        }
+
+        //todo remove
+        public Transaction(int atmId, int ownerId, int accountId, TransactionType type, decimal amount,
+            int transactionId, long time, TransactionStatus status, string errorMessage)
+        {
+            AtmId = atmId;
+            OwnerId = ownerId;
+            AccountId = accountId;
+            Type = type;
+            Amount = amount;
+            TransactionId = transactionId;
+            Time = time;
+            Status = status;
+            ErrorMessage = errorMessage;
         }
 
         [DataMember]
@@ -54,16 +70,16 @@ namespace BankSystem.Models.Transaction
         public override string ToString()
         {
             var builder = new StringBuilder();
-            builder.Append("Transaction ID: ").Append(TransactionId).Append("\n");
-            builder.Append("ATM ID: ").Append(AtmId).Append("\n");
-            builder.Append("User ID: ").Append(OwnerId).Append("\n");
-            builder.Append("Account ID: ").Append(AccountId).Append("\n");
-            builder.Append("Transaction type: ").Append(Type).Append("\n");
-            builder.Append("Amount: ").Append(Amount).Append("\n");
-            builder.Append("Time: ").Append(DateUtils.ConvertToUserFriendlyFormat(Time)).Append("\n");
-            builder.Append("Status: ").Append(Status).Append("\n");
+            builder.Append("Transaction ID: ").Append(TransactionId).Append(Environment.NewLine);
+            builder.Append("ATM ID: ").Append(AtmId).Append(Environment.NewLine);
+            builder.Append("User ID: ").Append(OwnerId).Append(Environment.NewLine);
+            builder.Append("Account ID: ").Append(AccountId).Append(Environment.NewLine);
+            builder.Append("Transaction type: ").Append(Type).Append(Environment.NewLine);
+            builder.Append("Amount: ").Append(Amount).Append(Environment.NewLine);
+            builder.Append("Time: ").Append(DateUtils.ConvertToUserFriendlyFormat(Time)).Append(Environment.NewLine);
+            builder.Append("Status: ").Append(Status).Append(Environment.NewLine);
             if (!(string.IsNullOrEmpty(ErrorMessage) || string.IsNullOrWhiteSpace(ErrorMessage)))
-                builder.Append("Error: ").Append(ErrorMessage).Append("\n");
+                builder.Append("Error: ").Append(ErrorMessage).Append(Environment.NewLine);
 
             return builder.ToString();
         }

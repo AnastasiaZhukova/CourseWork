@@ -14,7 +14,7 @@ namespace Test
 
         public Stream GetStream()
         {
-            return new FileStream(_path, FileMode.Open);
+            return new FileStream(_path, FileMode.OpenOrCreate);
         }
     }
 }

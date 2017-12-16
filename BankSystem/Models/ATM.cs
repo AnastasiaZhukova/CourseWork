@@ -11,6 +11,12 @@ namespace BankSystem.Models
         [DataMember]
         internal int Id { get; private set; }
 
+        public Atm(int id, DbSourceProvider sourceProvider)
+        {
+            Id = id;
+            SourceProvider = sourceProvider;
+        }
+
         [DataMember]
         public DbSourceProvider SourceProvider { get; private set; }
 

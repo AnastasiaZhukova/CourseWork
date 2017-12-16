@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Security.Policy;
 using System.Windows.Forms;
 using BankSystem.Atm;
 using CourseWork_3_sem.Presenters;
@@ -19,10 +22,14 @@ namespace CourseWork_3_sem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //if (!TryInitialize()) return;
+            var startupPath = Application.StartupPath;
+            Debug.Print(startupPath);
+            Debug.Print(Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)));
+            if (!TryInitialize()) return;
+
 
             var mainForm = new MainForm();
-            mainForm.SetPresenter(new DepositMainFormPresenter(null, null, mainForm));
+            mainForm.SetPresenter(new StarterMainFormPresenter(_atmManager, mainForm));
             Application.Run(mainForm);
         }
 

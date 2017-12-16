@@ -38,10 +38,6 @@ namespace CourseWork_3_sem.View
             this.text_RightHigh = new System.Windows.Forms.TextBox();
             this.text_LeftHigh = new System.Windows.Forms.TextBox();
             this.text_LeftLow = new System.Windows.Forms.TextBox();
-            this.button_LeftLow = new System.Windows.Forms.Button();
-            this.button_LeftHight = new System.Windows.Forms.Button();
-            this.button_RightHigh = new System.Windows.Forms.Button();
-            this.button_RightLow = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -167,53 +163,13 @@ namespace CourseWork_3_sem.View
             this.text_LeftLow.Tag = "LL";
             this.text_LeftLow.Text = "LeftLow";
             // 
-            // button_LeftLow
-            // 
-            this.button_LeftLow.Location = new System.Drawing.Point(47, 608);
-            this.button_LeftLow.Name = "button_LeftLow";
-            this.button_LeftLow.Size = new System.Drawing.Size(81, 41);
-            this.button_LeftLow.TabIndex = 9;
-            this.button_LeftLow.UseVisualStyleBackColor = true;
-            this.button_LeftLow.Click += new System.EventHandler(this.button_LeftLow_Click);
-            // 
-            // button_LeftHight
-            // 
-            this.button_LeftHight.Location = new System.Drawing.Point(146, 596);
-            this.button_LeftHight.Name = "button_LeftHight";
-            this.button_LeftHight.Size = new System.Drawing.Size(81, 41);
-            this.button_LeftHight.TabIndex = 10;
-            this.button_LeftHight.UseVisualStyleBackColor = true;
-            this.button_LeftHight.Click += new System.EventHandler(this.button_LeftHight_Click);
-            // 
-            // button_RightHigh
-            // 
-            this.button_RightHigh.Location = new System.Drawing.Point(20, 499);
-            this.button_RightHigh.Name = "button_RightHigh";
-            this.button_RightHigh.Size = new System.Drawing.Size(81, 41);
-            this.button_RightHigh.TabIndex = 11;
-            this.button_RightHigh.UseVisualStyleBackColor = true;
-            this.button_RightHigh.Click += new System.EventHandler(this.button_RightHigh_Click);
-            // 
-            // button_RightLow
-            // 
-            this.button_RightLow.Location = new System.Drawing.Point(210, 508);
-            this.button_RightLow.Name = "button_RightLow";
-            this.button_RightLow.Size = new System.Drawing.Size(81, 41);
-            this.button_RightLow.TabIndex = 12;
-            this.button_RightLow.UseVisualStyleBackColor = true;
-            this.button_RightLow.Click += new System.EventHandler(this.button_RightLow_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.pictureBox3);
-            this.panel2.Controls.Add(this.button_LeftLow);
-            this.panel2.Controls.Add(this.button_LeftHight);
-            this.panel2.Controls.Add(this.button_RightLow);
             this.panel2.Controls.Add(this.pictureBox2);
-            this.panel2.Controls.Add(this.button_RightHigh);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.button_Insert);
             this.panel2.Controls.Add(this.label_Pin);
@@ -371,7 +327,6 @@ namespace CourseWork_3_sem.View
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button_Insert
             // 
@@ -598,6 +553,8 @@ namespace CourseWork_3_sem.View
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ATM";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Leave += new System.EventHandler(this.MainForm_Leave);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -621,14 +578,12 @@ namespace CourseWork_3_sem.View
 
         #endregion
         private System.Windows.Forms.TextBox textBox_InputAmount;
-        private System.Windows.Forms.Button button_LeftLow;
+  
         private System.Windows.Forms.TextBox text_LeftHigh;
         private System.Windows.Forms.TextBox text_LeftLow;
         private System.Windows.Forms.TextBox text_RightLow;
         private System.Windows.Forms.TextBox text_RightHigh;
-        private System.Windows.Forms.Button button_LeftHight;
-        private System.Windows.Forms.Button button_RightHigh;
-        private System.Windows.Forms.Button button_RightLow;
+
         private System.Windows.Forms.Label label_InputAmount;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;

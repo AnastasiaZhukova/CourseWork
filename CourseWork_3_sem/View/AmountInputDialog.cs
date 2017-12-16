@@ -18,18 +18,42 @@ namespace CourseWork_3_sem.View
             InitializeComponent();
         }
 
+        private bool _isSubmitted;
+
         private void textBox_InputAmount_KeyPress(object sender, KeyPressEventArgs e)
         {
+            var eKeyChar = e.KeyChar;
+            if (!char.IsDigit(eKeyChar) && !char.IsControl(eKeyChar))
+            {
+                e.Handled = true;
+            }
+            if (char.IsControl(eKeyChar) && eKeyChar != '\b')
+            {
+                e.Handled = true;
+            }
+
+            if (!char.IsControl(eKeyChar) || eKeyChar != '\r')
+            {
+                return;
+            }
+
+            e.Handled = true;
+            OnSubmit?.Invoke(textBox_InputAmount.Text);
+            _isSubmitted = true;
+            Close();
         }
 
         private void AmountInputDialog_Leave(object sender, EventArgs e)
         {
             OnReject?.Invoke();
+            Close();
         }
+
 
         private void AmountInputDialog_FormClosed(object sender, FormClosedEventArgs e)
         {
-            OnReject?.Invoke();
+            if (!_isSubmitted) OnReject?.Invoke();
+            Close();
         }
     }
 }
