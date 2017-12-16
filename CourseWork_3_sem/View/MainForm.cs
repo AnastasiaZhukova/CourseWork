@@ -27,6 +27,10 @@ namespace CourseWork_3_sem.View
             {
                 label_Time.Invoke(new Action(() => { label_Time.Text = text; }));
             }
+            else
+            {
+                label_Time.Text = text;
+            }
         }
 
         public void SetWindowHighText(string text)
@@ -55,32 +59,74 @@ namespace CourseWork_3_sem.View
 
         public void SetLeftHighText(string text)
         {
-            text_LeftHigh.Text = text;
+            if (text_LeftHigh.InvokeRequired)
+            {
+                text_LeftHigh.Invoke(new Action(() => { text_LeftHigh.Text = text; }));
+            }
+            else
+            {
+                text_LeftHigh.Text = text;
+            }
         }
 
         public void SetLeftLowText(string text)
         {
-            text_LeftLow.Text = text;
+            if (text_LeftLow.InvokeRequired)
+            {
+                text_LeftLow.Invoke(new Action(() => { text_LeftLow.Text = text; }));
+            }
+            else
+            {
+                text_LeftLow.Text = text;
+            }
         }
 
         public void SetRightLowText(string text)
         {
-            text_RightLow.Text = text;
+            if (text_RightLow.InvokeRequired)
+            {
+                text_RightLow.Invoke(new Action(() => { text_RightLow.Text = text; }));
+            }
+            else
+            {
+                text_RightLow.Text = text;
+            }
         }
 
         public void SetRightHighText(string text)
         {
-            text_RightHigh.Text = text;
+            if (text_RightHigh.InvokeRequired)
+            {
+                text_RightHigh.Invoke(new Action(() => { text_RightHigh.Text = text; }));
+            }
+            else
+            {
+                text_RightHigh.Text = text;
+            }
         }
 
         public void SetInsertMoneyFieldEnabled(bool enabled)
         {
-            textBox_InputAmount.Enabled = enabled;
+            if (textBox_InputAmount.InvokeRequired)
+            {
+                textBox_InputAmount.Invoke(new Action(() => { textBox_InputAmount.Enabled = enabled; }));
+            }
+            else
+            {
+                textBox_InputAmount.Enabled = enabled;
+            }
         }
 
         public void SetInsertMoneyFieldText(string text)
         {
-            textBox_InputAmount.Text = text;
+            if (textBox_InputAmount.InvokeRequired)
+            {
+                textBox_InputAmount.Invoke(new Action(() => { textBox_InputAmount.Text = text; }));
+            }
+            else
+            {
+                textBox_InputAmount.Text = text;
+            }
         }
 
         public string GetInsertMoneyTextBoxText()
@@ -102,17 +148,38 @@ namespace CourseWork_3_sem.View
 
         public void SetGetMoneyButtonText(string text)
         {
-            button_TakeMoney.Text = text;
+            if (button_TakeMoney.InvokeRequired)
+            {
+                button_TakeMoney.Invoke(new Action(() => { button_TakeMoney.Text = text; }));
+            }
+            else
+            {
+                button_TakeMoney.Text = text;
+            }
         }
 
         public void SetCardNumFieldEnabled(bool enabled)
         {
-            textBox_CardNum.Enabled = enabled;
+            if (textBox_CardNum.InvokeRequired)
+            {
+                textBox_CardNum.Invoke(new Action(() => { textBox_CardNum.Enabled = enabled; }));
+            }
+            else
+            {
+                textBox_CardNum.Enabled = enabled;
+            }
         }
 
         public void SetCardNumFieldText(string text)
         {
-            textBox_CardNum.Text = text;
+            if (textBox_CardNum.InvokeRequired)
+            {
+                textBox_CardNum.Invoke(new Action(() => { textBox_CardNum.Text = text; }));
+            }
+            else
+            {
+                textBox_CardNum.Text = text;
+            }
         }
 
         public string GetCardNumFieldText()
@@ -122,12 +189,26 @@ namespace CourseWork_3_sem.View
 
         public void SetCardPinFieldEnabled(bool enabled)
         {
-            textBox_CardPin.Enabled = enabled;
+            if (textBox_CardPin.InvokeRequired)
+            {
+                textBox_CardPin.Invoke(new Action(() => { textBox_CardPin.Enabled = enabled; }));
+            }
+            else
+            {
+                textBox_CardPin.Enabled = enabled;
+            }
         }
 
         public void SetCarPinFieldText(string text)
         {
-            textBox_CardPin.Text = text;
+            if (textBox_CardPin.InvokeRequired)
+            {
+                textBox_CardPin.Invoke(new Action(() => { textBox_CardPin.Text = text; }));
+            }
+            else
+            {
+                textBox_CardPin.Text = text;
+            }
         }
 
         public string GetCardPinFieldText()
@@ -137,27 +218,62 @@ namespace CourseWork_3_sem.View
 
         public void SetInsertButtonEnabled(bool enabled)
         {
-            button_InsertCard.Enabled = enabled;
+            if (button_InsertCard.InvokeRequired)
+            {
+                button_InsertCard.Invoke(new Action(() => { button_InsertCard.Enabled = enabled; }));
+            }
+            else
+            {
+                button_InsertCard.Enabled = enabled;
+            }
         }
 
         public void SetLeftHighButtonEnabled(bool enabled)
         {
-            button_LH.Enabled = enabled;
+            if (button_LH.InvokeRequired)
+            {
+                button_LH.Invoke(new Action(() => { button_LH.Enabled = enabled; }));
+            }
+            else
+            {
+                button_LH.Enabled = enabled;
+            }
         }
 
         public void SetLeftLowButtonEnabled(bool enabled)
         {
-            button_LL.Enabled = enabled;
+            if (button_LL.InvokeRequired)
+            {
+                button_LL.Invoke(new Action(() => { button_LL.Enabled = enabled; }));
+            }
+            else
+            {
+                button_LL.Enabled = enabled;
+            }
         }
 
         public void SetRightLowButtonEnabled(bool enabled)
         {
-            button_RL.Enabled = enabled;
+            if (button_RL.InvokeRequired)
+            {
+                button_RL.Invoke(new Action(() => { button_RL.Enabled = enabled; }));
+            }
+            else
+            {
+                button_RL.Enabled = enabled;
+            }
         }
 
         public void SetRigthHighButtonEnabled(bool enabled)
         {
-            button_RH.Enabled = enabled;
+            if (button_RH.InvokeRequired)
+            {
+                button_RH.Invoke(new Action(() => { button_RH.Enabled = enabled; }));
+            }
+            else
+            {
+                button_RH.Enabled = enabled;
+            }
         }
 
         public void CloseForm()

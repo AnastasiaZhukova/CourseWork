@@ -86,6 +86,11 @@ namespace CourseWork_3_sem.Presenters.MainForm
             {
                 View.SetWindowHighText("Success");
             }
+
+
+            View.SetLeftLowButtonEnabled(false);
+            View.SetRightLowButtonEnabled(false);
+
             var printCheckDialog = new PrintCheckDialog();
             printCheckDialog.OnYes += PrintCheck;
             printCheckDialog.OnNo += Finish;
