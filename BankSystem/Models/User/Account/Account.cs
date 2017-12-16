@@ -18,16 +18,6 @@ namespace BankSystem.Models.User.Account
             Balance = balance;
         }
 
-        //todo remove
-        public Account(int id, int pin, long ownerId, Balance balance, List<int> transactionIds)
-        {
-            Id = id;
-            Pin = pin;
-            OwnerId = ownerId;
-            Balance = balance;
-            TransactionIds = transactionIds;
-        }
-
         [DataMember]
         internal int Id { get; private set; }
 

@@ -6,9 +6,7 @@ namespace CourseWork_3_sem
 {
     public static class ProgramSourceProvider
     {
-        //TODO implement
         private static readonly string AtmSourcePath = GetPath();
-
 
         public static AtmSource GetAtmSource()
         {

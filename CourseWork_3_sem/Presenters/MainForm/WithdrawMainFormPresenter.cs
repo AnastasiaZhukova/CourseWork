@@ -56,6 +56,10 @@ namespace CourseWork_3_sem.Presenters.MainForm
         //Submit
         public override void OnLeftLowButtonClicked()
         {
+            
+            View.SetLeftLowButtonEnabled(false);
+            View.SetRightLowButtonEnabled(false);
+
             if (_totalAmount <= 0)
             {
                 ShowError("Invalid amount");

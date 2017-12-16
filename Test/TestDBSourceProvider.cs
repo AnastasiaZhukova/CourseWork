@@ -6,7 +6,6 @@ namespace Test
 {
     public class TestDbSourceProvider : IDbSourceProvider
     {
-        
         //TODO change directories
         private const string UserFile =
             "C:\\Users\\Asus\\Documents\\Visual Studio 2017\\Projects\\CourseWork_3_sem\\Test\\users.json";
@@ -28,7 +27,8 @@ namespace Test
 
         public IDbSource GetTransactionDbSource()
         {
-            throw new NotImplementedException();
+            //not used method
+            return null;
         }
     }
 }

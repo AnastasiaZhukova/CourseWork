@@ -20,21 +20,6 @@ namespace BankSystem.Models.Transaction
             Amount = pBuilder.Amount;
         }
 
-        //todo remove
-        public Transaction(int atmId, int ownerId, int accountId, TransactionType type, decimal amount,
-            int transactionId, long time, TransactionStatus status, string errorMessage)
-        {
-            AtmId = atmId;
-            OwnerId = ownerId;
-            AccountId = accountId;
-            Type = type;
-            Amount = amount;
-            TransactionId = transactionId;
-            Time = time;
-            Status = status;
-            ErrorMessage = errorMessage;
-        }
-
         [DataMember]
         private int AtmId { get; set; }
 

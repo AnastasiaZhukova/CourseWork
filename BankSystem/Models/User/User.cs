@@ -6,15 +6,6 @@ namespace BankSystem.Models.User
     [DataContract(Name = "User")]
     public class User : IIdentifiable
     {
-        //todo remove
-        public User(int id, string name, long accountId)
-        {
-            Id = id;
-            Name = name;
-            AccountId = accountId;
-        }
-        
-
         [DataMember]
         internal int Id { get; private set; }
 
@@ -33,6 +24,5 @@ namespace BankSystem.Models.User
         {
             return Name;
         }
-  
     }
 }

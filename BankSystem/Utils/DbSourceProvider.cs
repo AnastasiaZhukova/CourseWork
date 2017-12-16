@@ -8,16 +8,14 @@ namespace BankSystem.Utils
     [KnownType(typeof(DbFileSource))]
     public class DbSourceProvider : IDbSourceProvider
     {
-        //todo set private
-        
         [DataMember]
-        public DbFileSource UserDb { get; set; }
+        private DbFileSource UserDb { get; set; }
 
         [DataMember]
-        public DbFileSource AccountDb { get; set; }
+        private DbFileSource AccountDb { get; set; }
 
         [DataMember]
-        public DbFileSource TransactionDb { get; set; }
+        private DbFileSource TransactionDb { get; set; }
 
         public IDbSource GetUserDbSource()
         {
