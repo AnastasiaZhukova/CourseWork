@@ -66,7 +66,6 @@
       <DependentUpon>CheckDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="View\IMainForm.cs" />
-    <Compile Include="Presenters\StartFormPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgramSourceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,7 +75,6 @@
     <Compile Include="View\InformationForm.Designer.cs">
       <DependentUpon>InformationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\IStartForm.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,12 +86,6 @@
     </Compile>
     <Compile Include="View\PrintCheckDialog.Designer.cs">
       <DependentUpon>PrintCheckDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\StartForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\StartForm.Designer.cs">
-      <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -118,9 +110,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\PrintCheckDialog.resx">
       <DependentUpon>PrintCheckDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\StartForm.resx">
-      <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

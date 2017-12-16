@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using CourseWork_3_sem.Presenters;
 using CourseWork_3_sem.Presenters.MainForm;
@@ -107,13 +108,22 @@ namespace CourseWork_3_sem.View
 
         public void SetInsertMoneyFieldEnabled(bool enabled)
         {
+            Color backColor;
+            if (enabled) backColor = Color.LightGreen;
+            else backColor = SystemColors.Window;
+
             if (textBox_InputAmount.InvokeRequired)
             {
-                textBox_InputAmount.Invoke(new Action(() => { textBox_InputAmount.Enabled = enabled; }));
+                textBox_InputAmount.Invoke(new Action(() =>
+                {
+                    textBox_InputAmount.Enabled = enabled;
+                    textBox_InputAmount.BackColor = backColor;
+                }));
             }
             else
             {
                 textBox_InputAmount.Enabled = enabled;
+                textBox_InputAmount.BackColor = backColor;
             }
         }
 

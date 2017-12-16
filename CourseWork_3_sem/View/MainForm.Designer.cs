@@ -31,7 +31,7 @@ namespace CourseWork_3_sem.View
         /// </summary>
         private void InitializeComponent()
         {
-            var resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.textBox_InputAmount = new System.Windows.Forms.TextBox();
             this.label_InputAmount = new System.Windows.Forms.Label();
             this.text_RightLow = new System.Windows.Forms.TextBox();
@@ -84,6 +84,7 @@ namespace CourseWork_3_sem.View
             // 
             // textBox_InputAmount
             // 
+            this.textBox_InputAmount.BackColor = System.Drawing.SystemColors.Window;
             this.textBox_InputAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_InputAmount.Enabled = false;
             this.textBox_InputAmount.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -97,13 +98,13 @@ namespace CourseWork_3_sem.View
             // 
             this.label_InputAmount.AutoSize = true;
             this.label_InputAmount.BackColor = System.Drawing.Color.Silver;
-            this.label_InputAmount.Font = new System.Drawing.Font("Consolas", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_InputAmount.Font = new System.Drawing.Font("Consolas", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_InputAmount.ForeColor = System.Drawing.Color.ForestGreen;
             this.label_InputAmount.Location = new System.Drawing.Point(3, 7);
             this.label_InputAmount.Name = "label_InputAmount";
-            this.label_InputAmount.Size = new System.Drawing.Size(228, 26);
+            this.label_InputAmount.Size = new System.Drawing.Size(378, 19);
             this.label_InputAmount.TabIndex = 15;
-            this.label_InputAmount.Text = "Insert money here:";
+            this.label_InputAmount.Text = "Insert money here(press Enter to insert):";
             // 
             // text_RightLow
             // 
