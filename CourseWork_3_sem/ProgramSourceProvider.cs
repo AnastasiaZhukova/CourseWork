@@ -1,4 +1,5 @@
-﻿using System.CodeDom.Compiler;
+﻿using System;
+using System.CodeDom.Compiler;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -32,8 +33,20 @@ namespace CourseWork_3_sem
             };
             var atm = new Atm(100, provider);
             var serializer = new AtmSerializer();
-            var fs = new FileStream(AtmSourcePath, FileMode.Truncate);
-            serializer.Write(atm, fs);
+            if (!File.Exists(AtmSourcePath))
+            {
+                FileStream fs;
+                try
+                {
+                    fs = new FileStream(AtmSourcePath, FileMode.OpenOrCreate);
+                }
+                catch (Exception exception)
+                {
+                    throw exception;
+                }
+
+                serializer.Write(atm, fs);
+            }
         }
     }
 }
