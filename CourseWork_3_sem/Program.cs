@@ -23,8 +23,8 @@ namespace CourseWork_3_sem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var startupPath = Application.StartupPath;
-            Debug.Print(startupPath);
-            Debug.Print(Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)));
+            //Debug.Print(startupPath);
+            //Debug.Print(Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)));
             if (!TryInitialize()) return;
 
 

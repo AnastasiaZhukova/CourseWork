@@ -347,10 +347,10 @@ namespace CourseWork_3_sem.View
         private void textBox_CardPin_KeyPress(object sender, KeyPressEventArgs e)
         {
             var eKeyChar = e.KeyChar;
-            if (textBox_CardPin.Text.Length >= 4 && !char.IsControl(eKeyChar))
+/*            if (textBox_CardPin.Text.Length >= 4 && !char.IsControl(eKeyChar))
             {
                 e.Handled = true;
-            }
+            }*/
             if (!char.IsDigit(eKeyChar) && !char.IsControl(eKeyChar))
             {
                 e.Handled = true;

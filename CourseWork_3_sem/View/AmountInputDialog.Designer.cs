@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AmountInputDialog));
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(AmountInputDialog));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_InputAmount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();

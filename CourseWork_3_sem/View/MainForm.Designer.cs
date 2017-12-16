@@ -31,7 +31,7 @@ namespace CourseWork_3_sem.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.textBox_InputAmount = new System.Windows.Forms.TextBox();
             this.label_InputAmount = new System.Windows.Forms.Label();
             this.text_RightLow = new System.Windows.Forms.TextBox();
