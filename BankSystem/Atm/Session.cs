@@ -1,8 +1,9 @@
-﻿using BankSystem.Models.DB;
-using BankSystem.Models.Transaction;
+﻿using BankSystem.Atm.Transactions;
+using BankSystem.DB;
+using BankSystem.Models;
 using BankSystem.Models.User.Account;
 
-namespace BankSystem.Models
+namespace BankSystem.Atm
 {
     public class Session
     {
@@ -12,18 +13,18 @@ namespace BankSystem.Models
 
         private readonly Account _account;
 
-        private readonly Atm _atm;
+        private readonly Models.Atm _atm;
         private readonly DbManager _dbManager = DbManager.GetInstance();
 
         private readonly TransactionManager _transactionManager;
-        private readonly User.User _user;
+        private readonly Models.User.User _user;
 
         /// <summary>
         /// </summary>
         /// <param name="atm"></param>
         /// <param name="accountId"></param>
         /// <exception cref="IllegalStateException"></exception>
-        public Session(Atm atm, int accountId)
+        public Session(Models.Atm atm, int accountId)
         {
             _atm = atm;
 
@@ -37,13 +38,6 @@ namespace BankSystem.Models
 
         public event TransactionStarted OnTransactionStarted;
         public event TransactionFinished OnTransactionFinished;
-
-        public string GetFullAccountInfo()
-        {
-            if (_account == null || _user == null) throw new IllegalStateException();
-
-            return _account.ToString();
-        }
 
         public string GetUserName()
         {
@@ -90,10 +84,10 @@ namespace BankSystem.Models
             return _dbManager.GetTransactionDataBase().Get(transactionId).ErrorMessage;
         }
 
-        private void FinishTransaction(Transaction.Transaction transaction)
+        private void FinishTransaction(Transaction transaction)
         {
-            var success = string.IsNullOrEmpty(transaction.ErrorMessage);
-            OnTransactionFinished?.Invoke(transaction.GetId(), success);
+            var isSuccess = string.IsNullOrEmpty(transaction.ErrorMessage);
+            OnTransactionFinished?.Invoke(transaction.GetId(), isSuccess);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Runtime.Serialization.Json;
 
 namespace BankSystem.Atm.Utils
 {
-    
     //todo must be internal
     public class AtmSerializer
     {

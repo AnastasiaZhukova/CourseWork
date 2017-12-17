@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using BankSystem.Atm.Utils;
+using BankSystem.DB;
 using BankSystem.Models;
-using BankSystem.Models.DB;
 using BankSystem.Utils;
 
 namespace CourseWork_3_sem

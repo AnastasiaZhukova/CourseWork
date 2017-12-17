@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BankSystem.Models
+namespace BankSystem.Atm
 {
     public class IllegalStateException : Exception
     {

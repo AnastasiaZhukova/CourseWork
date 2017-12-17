@@ -1,6 +1,6 @@
 ﻿using Database;
 
-namespace BankSystem.Models.DB
+namespace BankSystem.DB
 {
     public interface IDbSourceProvider
     {

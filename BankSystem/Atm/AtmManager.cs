@@ -1,7 +1,7 @@
 ﻿using System;
 using BankSystem.Atm.Utils;
+using BankSystem.DB;
 using BankSystem.Models;
-using BankSystem.Models.DB;
 using BankSystem.Utils;
 
 namespace BankSystem.Atm

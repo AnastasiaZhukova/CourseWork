@@ -1,6 +1,6 @@
 ﻿using BankSystem.Atm;
+using BankSystem.Atm.Transactions;
 using BankSystem.Models;
-using BankSystem.Models.Transaction;
 using CourseWork_3_sem.View;
 
 namespace CourseWork_3_sem.Presenters.MainForm
@@ -56,7 +56,6 @@ namespace CourseWork_3_sem.Presenters.MainForm
         //Submit
         public override void OnLeftLowButtonClicked()
         {
-            
             View.SetLeftLowButtonEnabled(false);
             View.SetRightLowButtonEnabled(false);
 

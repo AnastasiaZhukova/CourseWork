@@ -9,7 +9,7 @@ namespace BankSystem.Models.User.Account
 {
     [DataContract(Name = "Account")]
     [KnownType(typeof(Balance))]
-    public class Account : IIdentifiable
+    internal class Account : IIdentifiable
     {
         internal Account(int id, long ownerId, Balance balance)
         {

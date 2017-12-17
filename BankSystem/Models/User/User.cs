@@ -4,7 +4,7 @@ using Database;
 namespace BankSystem.Models.User
 {
     [DataContract(Name = "User")]
-    public class User : IIdentifiable
+    internal class User : IIdentifiable
     {
         [DataMember]
         internal int Id { get; private set; }

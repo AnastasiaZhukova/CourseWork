@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using BankSystem.Models.DB;
+using BankSystem.DB;
 using Database;
 
 namespace BankSystem.Utils

@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using Database;
 
-namespace BankSystem.Models.DB
+namespace BankSystem.DB
 {
     [DataContract(Name = "DBFileSource")]
     public class DbFileSource : IDbSource

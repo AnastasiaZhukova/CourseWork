@@ -1,7 +1,8 @@
-﻿using BankSystem.Models.User.Account;
+﻿using BankSystem.Models;
+using BankSystem.Models.User.Account;
 using Database;
 
-namespace BankSystem.Models.DB
+namespace BankSystem.DB
 {
     internal static class DbFactory
     {
@@ -23,11 +24,11 @@ namespace BankSystem.Models.DB
         /// <param name="pSource"></param>
         /// <returns></returns>
         /// <exception cref="InvalidSourceException"></exception>
-        internal static DataBase<User.User> GetUserDataBase(IDbSource pSource)
+        internal static DataBase<Models.User.User> GetUserDataBase(IDbSource pSource)
         {
             if (pSource == null) throw new InvalidSourceException("No such source");
 
-            var helper = new DbHelper<User.User>();
+            var helper = new DbHelper<Models.User.User>();
             return helper.Read(pSource);
         }
 
@@ -36,11 +37,11 @@ namespace BankSystem.Models.DB
         /// <param name="pSource"></param>
         /// <returns></returns>
         /// <exception cref="InvalidSourceException"></exception>
-        internal static DataBase<Transaction.Transaction> GetTransactionDataBase(IDbSource pSource)
+        internal static DataBase<Transaction> GetTransactionDataBase(IDbSource pSource)
         {
             if (pSource == null) throw new InvalidSourceException("No such source");
 
-            var helper = new DbHelper<Transaction.Transaction>();
+            var helper = new DbHelper<Transaction>();
             return helper.Read(pSource);
         }
     }

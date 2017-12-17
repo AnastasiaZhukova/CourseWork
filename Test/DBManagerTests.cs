@@ -1,5 +1,5 @@
 ﻿using System;
-using BankSystem.Models.DB;
+using BankSystem.DB;
 using BankSystem.Models.User;
 using BankSystem.Models.User.Account;
 using Database;

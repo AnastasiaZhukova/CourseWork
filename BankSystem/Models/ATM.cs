@@ -4,6 +4,7 @@ using Database;
 
 namespace BankSystem.Models
 {
+    //todo must be internal, used onlu for generation json
     [DataContract(Name = "ATM")]
     [KnownType(typeof(DbSourceProvider))]
     public class Atm : IIdentifiable

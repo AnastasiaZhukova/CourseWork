@@ -1,4 +1,6 @@
-﻿namespace BankSystem.Models.Transaction
+﻿using BankSystem.Models;
+
+namespace BankSystem.Atm.Transactions
 {
     public class TransactionBuilder
     {

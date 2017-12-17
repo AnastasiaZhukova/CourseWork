@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using System.Text;
+using BankSystem.Atm.Transactions;
 using BankSystem.Utils;
 using Database;
 
-namespace BankSystem.Models.Transaction
+namespace BankSystem.Models
 {
     [DataContract(Name = "Transaction")]
     [KnownType(typeof(TransactionType))]

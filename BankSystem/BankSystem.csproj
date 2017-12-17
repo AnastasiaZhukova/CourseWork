@@ -41,29 +41,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Atm\AtmManager.cs" />
+    <Compile Include="Atm\IllegalStateException.cs" />
     <Compile Include="Atm\InitializationException.cs" />
     <Compile Include="Atm\InvalidPincodeException.cs" />
+    <Compile Include="Atm\Session.cs" />
     <Compile Include="Atm\SessionManager.cs" />
+    <Compile Include="Atm\Transactions\TransactionBuilder.cs" />
+    <Compile Include="Atm\Transactions\TransactionHandler.cs" />
+    <Compile Include="Atm\Transactions\TransactionManager.cs" />
+    <Compile Include="Atm\Transactions\TransactionStatus.cs" />
+    <Compile Include="Atm\Transactions\TransactionType.cs" />
+    <Compile Include="Atm\Transactions\UnknowTransactionException.cs" />
     <Compile Include="Atm\Utils\AtmSerializer.cs" />
     <Compile Include="Atm\Utils\AtmSource.cs" />
-    <Compile Include="Atm\Utils\StreamUtils.cs" />
+    <Compile Include="DB\DBFactory.cs" />
+    <Compile Include="DB\DBFileSource.cs" />
+    <Compile Include="DB\DBManager.cs" />
+    <Compile Include="DB\IDBSourceProvider.cs" />
+    <Compile Include="DB\InvalidSourceException.cs" />
+    <Compile Include="DB\SourceNotSetException.cs" />
+    <Compile Include="DB\UpdateHandler.cs" />
     <Compile Include="Models\ATM.cs" />
-    <Compile Include="Models\DB\DBFactory.cs" />
-    <Compile Include="Models\DB\DBFileSource.cs" />
-    <Compile Include="Models\DB\DBManager.cs" />
-    <Compile Include="Models\DB\IDBSourceProvider.cs" />
-    <Compile Include="Models\DB\InvalidSourceException.cs" />
-    <Compile Include="Models\DB\SourceNotSetException.cs" />
-    <Compile Include="Models\DB\UpdateHandler.cs" />
-    <Compile Include="Models\IllegalStateException.cs" />
-    <Compile Include="Models\Session.cs" />
-    <Compile Include="Models\Transaction\Transaction.cs" />
-    <Compile Include="Models\Transaction\TransactionBuilder.cs" />
-    <Compile Include="Models\Transaction\TransactionHandler.cs" />
-    <Compile Include="Models\Transaction\TransactionManager.cs" />
-    <Compile Include="Models\Transaction\TransactionStatus.cs" />
-    <Compile Include="Models\Transaction\TransactionType.cs" />
-    <Compile Include="Models\Transaction\UnknowTransactionException.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\User\Account\Account.cs" />
     <Compile Include="Models\User\Account\Balance.cs" />
     <Compile Include="Models\User\Account\NotEnoughMoneyException.cs" />
@@ -72,6 +71,8 @@
     <Compile Include="Utils\AccountUtils.cs" />
     <Compile Include="Utils\DateUtils.cs" />
     <Compile Include="Utils\DbSourceProvider.cs" />
+    <Compile Include="Utils\SessionUtils.cs" />
+    <Compile Include="Utils\StreamUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Database\Database.csproj">

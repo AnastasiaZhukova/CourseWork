@@ -1,7 +1,8 @@
-﻿using BankSystem.Models.User.Account;
+﻿using BankSystem.Models;
+using BankSystem.Models.User.Account;
 using Database;
 
-namespace BankSystem.Models.DB
+namespace BankSystem.DB
 {
     public class DbManager
     {
@@ -12,13 +13,13 @@ namespace BankSystem.Models.DB
         private static readonly object SyncLock = new object();
 
         private UpdateHandler<Account> _accountUpdateHandler;
-        private UpdateHandler<Transaction.Transaction> _transactionUpdateHandler;
-        private UpdateHandler<User.User> _userUpdateHandler;
+        private UpdateHandler<Transaction> _transactionUpdateHandler;
+        private UpdateHandler<Models.User.User> _userUpdateHandler;
         private volatile DataBase<Account> _accountDataBase;
 
         private IDbSourceProvider _sourceProvider;
-        private volatile DataBase<Transaction.Transaction> _transactionDataBase;
-        private volatile DataBase<User.User> _userDataBase;
+        private volatile DataBase<Transaction> _transactionDataBase;
+        private volatile DataBase<Models.User.User> _userDataBase;
 
         private DbManager()
         {
@@ -84,7 +85,7 @@ namespace BankSystem.Models.DB
                 _userDataBase = DbFactory.GetUserDataBase(GetUserDbSource());
 
                 if (_userDataBase == null) return;
-                _userUpdateHandler = new UpdateHandler<User.User>(_userDataBase);
+                _userUpdateHandler = new UpdateHandler<Models.User.User>(_userDataBase);
                 _userDataBase.OnUpdate += _userUpdateHandler.Save;
             }
         }
@@ -103,7 +104,7 @@ namespace BankSystem.Models.DB
                 _transactionDataBase = DbFactory.GetTransactionDataBase(GetTransactionDbSource());
 
                 if (_transactionDataBase == null) return;
-                _transactionUpdateHandler = new UpdateHandler<Transaction.Transaction>(_transactionDataBase);
+                _transactionUpdateHandler = new UpdateHandler<Transaction>(_transactionDataBase);
                 _transactionDataBase.OnUpdate += _transactionUpdateHandler.Save;
             }
         }
@@ -113,7 +114,7 @@ namespace BankSystem.Models.DB
         /// <exception cref="InvalidSourceException"></exception>
         /// <exception cref="SourceNotSetException"></exception>
         /// <returns></returns>
-        public DataBase<Account> GetAccountDatabase()
+        internal DataBase<Account> GetAccountDatabase()
         {
             return _accountDataBase;
         }
@@ -123,7 +124,7 @@ namespace BankSystem.Models.DB
         /// <exception cref="InvalidSourceException"></exception>
         /// <exception cref="SourceNotSetException"></exception>
         /// <returns></returns>
-        public DataBase<User.User> GetUserDataBase()
+        internal DataBase<Models.User.User> GetUserDataBase()
         {
             return _userDataBase;
         }
@@ -133,7 +134,7 @@ namespace BankSystem.Models.DB
         /// <exception cref="InvalidSourceException"></exception>
         /// <exception cref="SourceNotSetException"></exception>
         /// <returns></returns>
-        public DataBase<Transaction.Transaction> GetTransactionDataBase()
+        internal DataBase<Transaction> GetTransactionDataBase()
         {
             return _transactionDataBase;
         }

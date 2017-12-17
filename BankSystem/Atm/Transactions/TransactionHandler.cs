@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Threading;
-using BankSystem.Models.DB;
+using BankSystem.DB;
+using BankSystem.Models;
 using BankSystem.Models.User.Account;
 using BankSystem.Utils;
 
-namespace BankSystem.Models.Transaction
+namespace BankSystem.Atm.Transactions
 {
     public class TransactionHandler
     {
@@ -14,7 +15,7 @@ namespace BankSystem.Models.Transaction
         private readonly ConcurrentQueue<Transaction> _transactions;
         private Account _account;
 
-        private User.User _user;
+        private Models.User.User _user;
 
 
         internal TransactionHandler()
@@ -77,7 +78,7 @@ namespace BankSystem.Models.Transaction
                 transaction.TransactionId = GenerateId();
 
 
-                AccountUtils.RegisterTransaction(_account.Id, transaction);
+                SessionUtils.RegisterTransaction(_account.Id, transaction);
 
                 OnTransactionFinished?.Invoke(transaction);
             }

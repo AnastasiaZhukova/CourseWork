@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BankSystem.Models.DB
+namespace BankSystem.DB
 {
     public class InvalidSourceException : Exception
     {

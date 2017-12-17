@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace BankSystem.Models.User.Account
 {
     [DataContract(Name = "Balance")]
-    public class Balance
+    internal class Balance
     {
         internal Balance(decimal amount)
         {

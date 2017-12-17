@@ -1,5 +1,5 @@
 ﻿using System;
-using BankSystem.Models.DB;
+using BankSystem.DB;
 using Database;
 
 namespace Test

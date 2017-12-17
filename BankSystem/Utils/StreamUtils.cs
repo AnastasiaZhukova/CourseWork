@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace BankSystem.Atm.Utils
+namespace BankSystem.Utils
 {
     public static class StreamUtils
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BankSystem.Models.Transaction
+namespace BankSystem.Atm.Transactions
 {
     public class UnknowTransactionException : Exception
     {

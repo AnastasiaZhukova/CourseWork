@@ -1,12 +1,10 @@
-﻿using BankSystem.Models;
-
-namespace BankSystem.Atm
+﻿namespace BankSystem.Atm
 {
-    public class SessionManager
+    internal class SessionManager
     {
         private readonly Models.Atm _atm;
 
-        public SessionManager(Models.Atm atm)
+        internal SessionManager(Models.Atm atm)
         {
             _atm = atm;
         }
@@ -17,7 +15,7 @@ namespace BankSystem.Atm
         /// <param name="accountId"></param>
         /// <returns></returns>
         /// /// <exception cref="IllegalStateException"></exception>
-        public Session StartNewSession(int accountId)
+        internal Session StartNewSession(int accountId)
         {
             return new Session(_atm, accountId);
         }

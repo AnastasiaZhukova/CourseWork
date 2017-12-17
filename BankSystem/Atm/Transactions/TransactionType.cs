@@ -1,4 +1,4 @@
-﻿namespace BankSystem.Models.Transaction
+﻿namespace BankSystem.Atm.Transactions
 {
     public enum TransactionType
     {

@@ -1,4 +1,6 @@
-﻿namespace BankSystem.Models.Transaction
+﻿using BankSystem.Models;
+
+namespace BankSystem.Atm.Transactions
 {
     public class TransactionManager
     {
@@ -14,9 +16,9 @@
             _transactionHandler = new TransactionHandler();
         }
 
-        public event TransactionFinished OnTransactionFinished;
+        internal event TransactionFinished OnTransactionFinished;
 
-        public static TransactionManager GetInstance()
+        internal static TransactionManager GetInstance()
         {
             if (_instance != null) return _instance;
 
@@ -29,7 +31,7 @@
             return _instance;
         }
 
-        public TransactionBuilder CreateTransaction()
+        internal TransactionBuilder CreateTransaction()
         {
             return new TransactionBuilder();
         }
